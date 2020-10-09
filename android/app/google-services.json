@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1022042250050",
+    "firebase_url": "https://nubianvr-companion-app.firebaseio.com",
+    "project_id": "nubianvr-companion-app",
+    "storage_bucket": "nubianvr-companion-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022042250050:android:cd51c30d99db33bdb346db",
+        "android_client_info": {
+          "package_name": "com.nubiancompanionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022042250050-1n5tfa37mhqt2hvd3i2a2fp7j91akkoo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0j85Dnc4PFfi3JSOTxOclCB--wN8funM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022042250050-1n5tfa37mhqt2hvd3i2a2fp7j91akkoo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022042250050:android:e8301d64a26d2603b346db",
+        "android_client_info": {
+          "package_name": "com.nubianvrcompanionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022042250050-1n5tfa37mhqt2hvd3i2a2fp7j91akkoo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0j85Dnc4PFfi3JSOTxOclCB--wN8funM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022042250050-1n5tfa37mhqt2hvd3i2a2fp7j91akkoo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
