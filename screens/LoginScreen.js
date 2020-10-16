@@ -30,6 +30,7 @@ const LoginScreen = ({navigation}) => {
         <TextInput
           placeholder="hello@nubianvr.com"
           placeholderTextColor="#ffffff8c"
+          keyboardType="email-address"
           style={[
             styles.textInput,
             {

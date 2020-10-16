@@ -13,6 +13,7 @@ import {AuthContext} from '../navigation/AuthProvider';
 const SignupScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [displayName, setDisplayName] = useState();
 
   const {register} = useContext(AuthContext);
 
@@ -26,10 +27,29 @@ const SignupScreen = ({navigation}) => {
         </Text>
       </View>
       <View style={styles.textInputView}>
+        <Text style={styles.textInputHeaderText}>
+          Please enter your username
+        </Text>
+        <TextInput
+          placeholder="Andy"
+          placeholderTextColor="#ffffff8c"
+          keyboardType="default"
+          style={[
+            styles.textInput,
+            {
+              color: '#ffffff',
+            },
+          ]}
+          autoCapitalize="words"
+          onChangeText={(userdisplayName) => setDisplayName(userdisplayName)}
+        />
+      </View>
+      <View style={styles.textInputView}>
         <Text style={styles.textInputHeaderText}>Please enter your e-mail</Text>
         <TextInput
           placeholder="hello@nubianvr.com"
           placeholderTextColor="#ffffff8c"
+          keyboardType="email-address"
           style={[
             styles.textInput,
             {
@@ -56,12 +76,10 @@ const SignupScreen = ({navigation}) => {
           onChangeText={(userPassword) => setPassword(userPassword)}
         />
       </View>
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text
-          style={styles.loginBtnText}
-          onPress={() => register(email, password)}>
-          Create Account
-        </Text>
+      <TouchableOpacity
+        style={styles.loginBtn}
+        onPress={() => register(email, password, displayName)}>
+        <Text style={styles.loginBtnText}>Create Account</Text>
       </TouchableOpacity>
       <View style={styles.accountInfoView}>
         <TouchableOpacity onPress={() => navigation.goBack()}>

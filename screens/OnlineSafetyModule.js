@@ -1,31 +1,74 @@
-import React from 'react';
-import {View, Text, Button, StyleSheet, StatusBar} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  ToastAndroid,
+} from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const OnlineSafetyModule = ({navigation}) => {
+  const [lessons, setPeople] = useState([
+    {name: 'Protecting your Personal Information', id: '1'},
+    {name: 'Spotting Bad Actors', id: '2'},
+    {name: 'Understanding Fake News', id: '3'},
+  ]);
+
   const {colors} = useTheme();
 
   const theme = useTheme();
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
-      <Text style={{color: colors.text}}>Online Safety Module</Text>
-      <Button
-        title="Go to details screen"
-        onPress={() => navigation.navigate('Home')}
+      <FlatList
+        numColumns={1}
+        keyExtractor={(item) => item.id}
+        data={lessons}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            style={styles.listView}
+            onPress={() =>
+              item.id == 1
+                ? navigation.navigate('Online Safety Lesson')
+                : ToastAndroid.show(
+                    'Lesson not available yet',
+                    ToastAndroid.SHORT,
+                  )
+            }>
+            <Text style={styles.item}>{item.name}</Text>
+            <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
+          </TouchableOpacity>
+        )}
       />
     </View>
   );
 };
 
-export default OnlineSafetyModule;
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#141414',
     flex: 1,
+    backgroundColor: '#000',
+  },
+  item: {
+    flex: 1,
+
+    fontSize: 13,
+    fontFamily: 'Rubik-Regular',
+    color: '#fff',
+  },
+  listView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginHorizontal: 20,
+    marginTop: 25,
+    marginBottom: 25,
+    backgroundColor: '#000',
   },
 });
+
+export default OnlineSafetyModule;

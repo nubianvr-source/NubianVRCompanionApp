@@ -2,10 +2,12 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/MainTabScreen';
 import OnlineSafetyModule from '../screens/OnlineSafetyModule';
+import ModuleIntoScreen from '../screens/ModuleIntroScreen';
+import Slider from '../screens/Slider';
 
 const Stack = createStackNavigator();
 
-const AppStack = () => {
+const AppStack = ({navigation}) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -18,11 +20,17 @@ const AppStack = () => {
           fontFamily: 'Rubik-Medium',
         },
       }}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="Home"
+        component={HomeScreen}
+      />
       <Stack.Screen
         name="Online Safety Module"
         component={OnlineSafetyModule}
       />
+      <Stack.Screen name="Online Safety Lesson" component={ModuleIntoScreen} />
+      <Stack.Screen name="Lesson Slides" component={Slider} />
     </Stack.Navigator>
   );
 };

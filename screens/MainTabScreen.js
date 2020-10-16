@@ -102,29 +102,74 @@ const MainTabScreen = () => (
 export default MainTabScreen;
 
 const HomeStackScreen = ({navigation}) => (
-  <HomeStack.Navigator>
-    <HomeStack.Screen
-      name="Home"
-      component={HomeScreen}
-      options={{
-        title: 'Overview',
-      }}
-    />
+  <HomeStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#000000',
+      },
+      headerTintColor: '#41B7E9',
+      headerTitleStyle: {
+        fontSize: 16,
+        fontFamily: 'Rubik-Medium',
+      },
+    }}>
+    <HomeStack.Screen name="Home" component={HomeScreen} />
   </HomeStack.Navigator>
 );
 
 const LessonStackScreen = ({navigation}) => (
-  <LessonsStack.Navigator>
-    <LessonsStack.Screen name="Lessons" component={LessonsScreen} />
+  <LessonsStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#000000',
+      },
+      headerTintColor: '#41B7E9',
+      headerTitleStyle: {
+        fontSize: 16,
+        fontFamily: 'Rubik-Medium',
+      },
+    }}>
+    <LessonsStack.Screen
+      name="Life Skills Curriculum"
+      component={LessonsScreen}
+      options={{
+        headerRight: () => (
+          <Image
+            source={require('../assets/img/lifeskillstabicon.png')}
+            style={styles.lessonsTabImage}
+          />
+        ),
+      }}
+    />
   </LessonsStack.Navigator>
 );
 const RoomsStackScreen = ({navigation}) => (
-  <RoomsStack.Navigator>
+  <RoomsStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#000000',
+      },
+      headerTintColor: '#41B7E9',
+      headerTitleStyle: {
+        fontSize: 16,
+        fontFamily: 'Rubik-Medium',
+      },
+    }}>
     <RoomsStack.Screen name="Rooms" component={RoomsScreen} />
   </RoomsStack.Navigator>
 );
 const ProfileStackScreen = ({navigation}) => (
-  <ProfileStack.Navigator>
+  <ProfileStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#000000',
+      },
+      headerTintColor: '#41B7E9',
+      headerTitleStyle: {
+        fontSize: 16,
+        fontFamily: 'Rubik-Medium',
+      },
+    }}>
     <ProfileStack.Screen name="Profile" component={ProfileScreen} />
   </ProfileStack.Navigator>
 );
@@ -132,6 +177,11 @@ const styles = StyleSheet.create({
   nubianLogo: {
     height: 16,
     width: 16,
+    resizeMode: 'stretch',
+  },
+  lessonsTabImage: {
+    height: 30,
+    width: 33,
     resizeMode: 'stretch',
   },
 });
