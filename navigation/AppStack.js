@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/MainTabScreen';
 import OnlineSafetyModule from '../screens/OnlineSafetyModule';
 import ModuleIntoScreen from '../screens/ModuleIntroScreen';
-import Slider from '../screens/Slider';
+import Slider from '../screens/InteractiveSlides';
 
 const Stack = createStackNavigator();
 
