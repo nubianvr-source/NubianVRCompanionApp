@@ -1,6 +1,5 @@
 const stories = [
   {
-    id: 1,
     username: 'Amit',
     title: 'Pune Dairies',
     profile: 'https://avatars0.githubusercontent.com/u/16208872?s=460&v=4',
@@ -16,7 +15,6 @@ const stories = [
     ],
   },
   {
-    id: 2,
     username: 'Trinadh',
     profile: 'https://avatars2.githubusercontent.com/u/45196619?s=460&v=4',
     title: 'My Gallery',
@@ -34,7 +32,7 @@ const stories = [
         url:
           'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/intro_UOuwzlCv_v9xH.mp4?alt=media&token=f1931d52-0622-4113-85e1-458cbee5b56c',
         type: 'video',
-        duration: 30,
+        duration: 2,
         isSeen: false,
         isReadMore: false,
         isPaused: true,
@@ -52,7 +50,6 @@ const stories = [
     ],
   },
   {
-    id: 3,
     username: 'Steve Jobs',
     profile:
       'https://s3.amazonaws.com/media.eremedia.com/uploads/2012/05/15181015/stevejobs.jpg',
@@ -89,7 +86,6 @@ const stories = [
     ],
   },
   {
-    id: 4,
     username: 'Rahul',
     profile:
       'https://images.unsplash.com/profile-1531581190171-0cf831d86212?dpr=2&auto=format&fit=crop&w=150&h=150&q=60&crop=faces&bg=fff',

@@ -87,7 +87,7 @@ const StoryContainer = (props) => {
     if (!isLoaded) {
       return (
         <View style={styles.loading}>
-          <View style={{width: 1, height: 1}}>
+          <View style={{width: 0.5, height: 1}}>
             <Story
               onImageLoaded={onImageLoaded}
               pause
@@ -111,12 +111,14 @@ const StoryContainer = (props) => {
       props.onClose();
     } else {
       setModel(false);
+      setIsPause(false);
     }
   };
 
   const onSwipeUp = () => {
     if (!isModelOpen && isReadMore) {
       setModel(true);
+      setIsPause(true);
     }
   };
 
@@ -144,12 +146,6 @@ const StoryContainer = (props) => {
 
           {loading()}
 
-          <UserView
-            name={user.username}
-            profile={user.profile}
-            onClosePress={props.onClose}
-          />
-
           {isReadMore && <Readmore onReadMore={onReadMoreOpen} />}
 
           <ProgressArray
@@ -172,7 +168,16 @@ const StoryContainer = (props) => {
           isOpen={isModelOpen}
           onClosed={onReadMoreClose}>
           <View style={styles.bar} />
-          <WebView source={{uri: 'https://www.google.com'}} />
+
+          <WebView
+            source={{uri: 'https://www.nubianvr.com/'}}
+            automaticallyAdjustContentInsets={false}
+            javaScriptEnabled={true}
+            domStorageEnabled={true}
+            style={{flex: 1}}
+            decelerationRate="normal"
+            startInLoadingState={true}
+          />
         </Modal>
       </TouchableOpacity>
     </GestureRecognizer>

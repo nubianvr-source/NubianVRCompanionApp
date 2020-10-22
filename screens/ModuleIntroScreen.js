@@ -87,7 +87,7 @@ const ModuleIntroScreen = ({navigation}) => {
         <Text style={styles.text}>6. Reflection: What’s next from here</Text>
       </View>
       <TouchableOpacity style={styles.enrollBtnInvert}>
-        <Text style={styles.enrollTxtInvert}>Enroll</Text>
+        <Text style={styles.enrollTxtInvert}>Start Lesson</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -202,9 +202,11 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: '#000',
+    flex: 1,
   },
   moduleBanner: {
-    resizeMode: 'stretch',
+    resizeMode: 'contain',
+    width: '100%',
     height: 230,
   },
 });

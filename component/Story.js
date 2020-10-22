@@ -24,7 +24,7 @@ const Story = (props) => {
           onLoadEnd={props.onImageLoaded}
           style={styles.content}
           resizeMode="stretch"
-          //width={ScreenWidth}
+          width={ScreenWidth}
         />
       ) : (
         <Video
@@ -32,6 +32,7 @@ const Story = (props) => {
           paused={props.pause || props.isNewStory}
           onLoad={(item) => props.onVideoLoaded(item)}
           style={styles.content}
+          resizeMode="contain"
         />
       )}
     </View>

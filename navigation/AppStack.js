@@ -4,6 +4,7 @@ import HomeScreen from '../screens/MainTabScreen';
 import OnlineSafetyModule from '../screens/OnlineSafetyModule';
 import ModuleIntoScreen from '../screens/ModuleIntroScreen';
 import Slider from '../screens/InteractiveSlides';
+import GameView from '../screens/GameScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,7 +31,16 @@ const AppStack = ({navigation}) => {
         component={OnlineSafetyModule}
       />
       <Stack.Screen name="Online Safety Lesson" component={ModuleIntoScreen} />
-      <Stack.Screen name="Lesson Slides" component={Slider} />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="Lesson Slides"
+        component={Slider}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="Game"
+        component={GameView}
+      />
     </Stack.Navigator>
   );
 };

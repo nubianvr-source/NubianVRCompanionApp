@@ -8,12 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-// import Modal from 'react-native-modalbox';
 import {CubeNavigationHorizontal} from 'react-native-3dcube-navigation';
 import AllStories from '../data/AllStories';
 import StoryContainer from '../component/StoryContainer';
 
-const Stories = (props, {navigation}) => {
+const InteractiveSlides = ({navigation}) => {
   const [isModelOpen, setModel] = useState(false);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
   const [currentScrollValue, setCurrentScrollValue] = useState(0);
@@ -26,18 +25,12 @@ const Stories = (props, {navigation}) => {
 
   const onStoryClose = () => {
     setModel(false);
+    navigation.goBack();
   };
 
   const onStoryNext = (isScroll) => {
-    const newIndex = currentUserIndex + 1;
-    if (AllStories.length - 1 > currentUserIndex) {
-      setCurrentUserIndex(newIndex);
-      if (!isScroll) {
-        modalScroll.current.scrollTo(newIndex, true);
-      }
-    } else {
-      setModel(false);
-    }
+    setModel(false);
+    navigation.navigate('Game');
   };
 
   const onStoryPrevious = (isScroll) => {
@@ -66,10 +59,18 @@ const Stories = (props, {navigation}) => {
   const renderSeperator = () => (
     <View style={{height: 1, backgroundColor: '#ccc'}} />
   );
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      onStorySelect(1);
+    });
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, []);
 
   return (
     <View style={styles.container}>
-      <FlatList
+      {/*<FlatList
         data={AllStories}
         horizontal
         renderItem={({item, index}) => (
@@ -96,8 +97,7 @@ const Stories = (props, {navigation}) => {
             <Text style={styles.title}>{item.title}</Text>
           </TouchableOpacity>
         )}
-      />
-
+      />*/}
       <Modal
         animationType="slide"
         transparent={false}
@@ -109,11 +109,12 @@ const Stories = (props, {navigation}) => {
           }
         }}
         onRequestClose={onStoryClose}>
-        {/* eslint-disable-next-line max-len*/}
+        {/* eslint-disable-next-line max-len */}
         <CubeNavigationHorizontal
-          callBackAfterSwipe={(g) => onScrollChange(g)}
+          //callBackAfterSwipe={(g) => onScrollChange(g)}
           ref={modalScroll}
-          style={styles.container}>
+          style={styles.container}
+          scrollLockPage={0}>
           {AllStories.map((item, index) => (
             <StoryContainer
               onClose={onStoryClose}
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     paddingVertical: 50,
-    backgroundColor: 'rgba(255,255,255,255)',
+    backgroundColor: '#000000',
   },
   circle: {
     width: 66,
@@ -153,4 +154,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Stories;
+export default InteractiveSlides;

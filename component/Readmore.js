@@ -17,7 +17,7 @@ class Readmore extends React.Component {
         <View style={styles.readMore}>
           <Icon name="chevron-up" size={20} color="white" />
         </View>
-        <Text style={styles.readText}>Read More</Text>
+        <Text style={styles.readText}>Swipe Up for More</Text>
       </TouchableOpacity>
     );
   }
