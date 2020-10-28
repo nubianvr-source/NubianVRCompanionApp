@@ -170,7 +170,18 @@ const ProfileStackScreen = ({navigation}) => (
         fontFamily: 'Rubik-Medium',
       },
     }}>
-    <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+    <ProfileStack.Screen
+      name="Profile"
+      component={ProfileScreen}
+      options={{
+        headerRight: () => (
+          <Image
+            source={require('../assets/img/settingsBtnIcon.png')}
+            style={styles.profileTabImage}
+          />
+        ),
+      }}
+    />
   </ProfileStack.Navigator>
 );
 const styles = StyleSheet.create({
@@ -182,6 +193,13 @@ const styles = StyleSheet.create({
   lessonsTabImage: {
     height: 30,
     width: 33,
+    marginRight: 10,
+    resizeMode: 'stretch',
+  },
+  profileTabImage: {
+    height: 20,
+    width: 20,
+    marginRight: 10,
     resizeMode: 'stretch',
   },
 });

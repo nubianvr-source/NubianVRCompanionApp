@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
        // }
 
         SetCurrentQuestion();
+        trueAnswerText.gameObject.SetActive(false);
+        falseAnswerText.gameObject.SetActive(false);
     }
 
     private void SetCurrentQuestion()
