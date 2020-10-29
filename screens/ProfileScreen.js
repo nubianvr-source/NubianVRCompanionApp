@@ -3,6 +3,7 @@ import {View, Text, Button, StyleSheet, StatusBar, Image} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {AuthContext} from '../navigation/AuthProvider';
 import auth from '@react-native-firebase/auth';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ProfileScreen = ({navigation}) => {
   const {colors} = useTheme();
@@ -70,6 +71,12 @@ const ProfileScreen = ({navigation}) => {
     <View style={styles.container}>
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
       <View style={styles.userInfoView}>
+        <TouchableOpacity style={styles.userImageView}>
+          <Image
+            source={require('../assets/img/defualtUserImage.png')}
+            style={styles.userImage}
+          />
+        </TouchableOpacity>
         <Text style={styles.textHighlightBold}>
           {auth().currentUser.displayName}
         </Text>
@@ -121,8 +128,6 @@ const ProfileScreen = ({navigation}) => {
           <Text style={styles.textHighlightBold}>Speak to a counsellor</Text>
         </Text>
       </View>
-
-      <Button title="Sign Out" onPress={() => logout()} />
     </View>
   );
 };
@@ -209,5 +214,14 @@ const styles = StyleSheet.create({
     height: 13,
     width: 16,
     marginRight: 10,
+  },
+  userImageView: {
+    borderRadius: 40,
+    alignItems: 'center',
+  },
+  userImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
   },
 });

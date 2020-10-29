@@ -5,6 +5,7 @@ import OnlineSafetyModule from '../screens/OnlineSafetyModule';
 import ModuleIntoScreen from '../screens/ModuleIntroScreen';
 import Slider from '../screens/InteractiveSlides';
 import GameView from '../screens/GameScreen';
+import PreferencesScreen from '../screens/PreferencesScreen';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,7 @@ const AppStack = ({navigation}) => {
         name="Game"
         component={GameView}
       />
+      <Stack.Screen name="Preferences" component={PreferencesScreen} />
     </Stack.Navigator>
   );
 };

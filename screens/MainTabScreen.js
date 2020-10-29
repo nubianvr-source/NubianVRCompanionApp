@@ -8,6 +8,7 @@ import HomeScreen from './HomeScreen';
 import LessonsScreen from './LessonsScreen';
 import RoomsScreen from './RoomsScreen';
 import ProfileScreen from './ProfileScreen';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const HomeStack = createStackNavigator();
 const LessonsStack = createStackNavigator();
@@ -175,10 +176,12 @@ const ProfileStackScreen = ({navigation}) => (
       component={ProfileScreen}
       options={{
         headerRight: () => (
-          <Image
-            source={require('../assets/img/settingsBtnIcon.png')}
-            style={styles.profileTabImage}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate('Preferences')}>
+            <Image
+              source={require('../assets/img/settingsBtnIcon.png')}
+              style={styles.profileTabImage}
+            />
+          </TouchableOpacity>
         ),
       }}
     />

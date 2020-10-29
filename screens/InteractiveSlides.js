@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {CubeNavigationHorizontal} from 'react-native-3dcube-navigation';
 import AllStories from '../data/AllStories';
-import StoryContainer from '../component/StoryContainer';
+import StoryContainer from '../components/NubianStoryComponents/StoryContainer';
 
 const InteractiveSlides = ({navigation}) => {
   const [isModelOpen, setModel] = useState(false);
