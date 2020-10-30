@@ -18,24 +18,30 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import UnityView, {UnityModule} from '@asmadsen/react-native-unity-view';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 const App: () => React$Node = () => {
   const [count, setClickCount] = useState(0);
   console.log(count);
   const onUnityMessage = (hander) => {
     console.log({hander});
+    navigation.navigate('Online Safety Lesson');
   };
+
   const navigation = useNavigation();
   const onClick = () => {
-    UnityModule.postMessageToUnityManager({
-      name: 'ToggleRotate',
-      data: 'Hello World',
-      callBack: (data) => {
-        Alert.alert('Tip', JSON.stringify(data));
-      },
-    });
+    console.log('Button Clicked');
+    UnityModule.postMessageToUnityManager(auth().currentUser.displayName);
   };
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      onClick();
+    });
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, []);
 
   return (
     <View style={{flex: 1}}>
@@ -46,11 +52,11 @@ const App: () => React$Node = () => {
           onUnityMessage={onUnityMessage}
         />
       </View>
-      <Button
+      {/*<Button
         style={{width: '100%'}}
         title="Go Back"
-        onPress={() => navigation.navigate("Online Safety Lesson")}
-      />
+        onPress={() => onClick()}
+      />*/}
     </View>
   );
 };

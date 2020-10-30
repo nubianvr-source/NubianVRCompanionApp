@@ -13,6 +13,7 @@ import Story from './Story';
 import UserView from './UserView';
 import Readmore from './Readmore';
 import ProgressArray from './ProgressArray';
+import Loader from '../LoaderComponent';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -95,7 +96,7 @@ const StoryContainer = (props) => {
               story={story}
             />
           </View>
-          <ActivityIndicator color="white" />
+          <Loader visible={!isLoaded} />
         </View>
       );
     }

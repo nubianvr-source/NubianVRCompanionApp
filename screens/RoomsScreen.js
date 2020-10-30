@@ -7,6 +7,7 @@ import {
   StatusBar,
   Dimensions,
   ScrollView,
+  ToastAndroid,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {AuthContext} from '../navigation/AuthProvider';
@@ -22,7 +23,10 @@ const RoomsScreen = ({navigation}) => {
     <View style={styles.container}>
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
       <ScrollView>
-        <TouchableOpacity /*onPress={() => navigation.navigate()}*/>
+        <TouchableOpacity
+          onPress={() =>
+            ToastAndroid.show('Rooms are not ready yet!', ToastAndroid.SHORT)
+          }>
           <View style={styles.roomListItemContainer}>
             <View style={{backgroundColor: '#93D10F', width: 2}} />
             <View style={styles.roomListItemView}>

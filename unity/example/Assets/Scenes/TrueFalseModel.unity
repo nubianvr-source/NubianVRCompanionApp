@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 84223306}
   - component: {fileID: 84223305}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: TrueButtonText
   m_TagString: MaterialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fbe3c09b43ce4304e86e7496c81bb9ed, type: 3}
-    m_FontSize: 28
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &301799171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 596.64, y: 85.48001}
+  m_SizeDelta: {x: 876.5001, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &353367547
 GameObject:
@@ -622,6 +622,8 @@ MonoBehaviour:
     isClickTrue: 1
     correctIntervention: Yes it is stretched.
     wrongIntervention: How did you not see that it is stretched.
+    TrueAnswerText: Yes the image looks stretched.
+    falseAnswerText: No it doesn't look stretched at all.
   - imageQuestion: {fileID: 21300000, guid: 29c435903c4f8404f87a061424329530, type: 3}
     textQuestion: This is Lenna, you dont know her but a new a new friend request
       just came from her to you. Do you accept?
@@ -630,14 +632,17 @@ MonoBehaviour:
       request from strangers.
     wrongIntervention: You should not have accepted that request, as it was from
       a stranger and could be anyone .
+    TrueAnswerText: She doesn't look harmful why not?
+    falseAnswerText: I won't accept her friend request as I do not know her.
   questionText: {fileID: 1030194423}
   questionImage: {fileID: 288865959}
-  delay: 0.5
-  trueAnswerText: {fileID: 1950733199}
-  falseAnswerText: {fileID: 301799172}
+  delay: 3
+  trueAnswerText: {fileID: 84223305}
+  falseAnswerText: {fileID: 808040365}
   interventionText: {fileID: 0}
   playerPointsText: {fileID: 398237280}
   numberOfQuestionsAnsweredText: {fileID: 1999449589}
+  messafeDisplayTemp: {fileID: 786270578}
   playerPoints: 0
   animator: {fileID: 1283436190}
 --- !u!4 &422987217
@@ -690,7 +695,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 596.64, y: 85.93332}
+  m_SizeDelta: {x: 876.5001, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519420028
 GameObject:
@@ -882,6 +887,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 422987216}
+        m_MethodName: LoadNextQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &728315555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +960,84 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!1 &786270577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 786270580}
+  - component: {fileID: 786270579}
+  - component: {fileID: 786270578}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &786270578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786270577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8745098}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: fbe3c09b43ce4304e86e7496c81bb9ed, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Test
+--- !u!222 &786270579
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786270577}
+  m_CullTransparentMesh: 0
+--- !u!224 &786270580
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786270577}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1037545678}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.39975196, y: 0.9523959}
+  m_AnchorMax: {x: 0.600752, y: 1}
+  m_AnchoredPosition: {x: -0.57777405, y: 0.30004883}
+  m_SizeDelta: {x: -0.6197815, y: -0.60009766}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &808040362
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +1050,7 @@ GameObject:
   - component: {fileID: 808040366}
   - component: {fileID: 808040365}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: FalseButtonText
   m_TagString: MaterialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,7 +1096,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fbe3c09b43ce4304e86e7496c81bb9ed, type: 3}
-    m_FontSize: 28
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1120,6 +1214,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 422987216}
         m_MethodName: UserSelectsFalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 422987216}
+        m_MethodName: LoadNextQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1306,6 +1411,7 @@ RectTransform:
   - {fileID: 398237279}
   - {fileID: 1999449588}
   - {fileID: 1756205048}
+  - {fileID: 786270580}
   m_Father: {fileID: 1283436189}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2400,8 +2506,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.104555555, y: 0.082250014}
   m_AnchorMax: {x: 0.9012222, y: 0.23600002}
-  m_AnchoredPosition: {x: -252.6, y: 34.5}
-  m_SizeDelta: {x: -473, y: -95}
+  m_AnchoredPosition: {x: -8.049988, y: 34.5}
+  m_SizeDelta: {x: 16.100037, y: -95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110830282
 MonoBehaviour:

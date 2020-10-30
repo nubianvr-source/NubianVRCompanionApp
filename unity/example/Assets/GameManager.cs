@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System.Linq;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
+using NubianVR.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,24 +23,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text interventionText;
     [SerializeField] private Text playerPointsText;
     [SerializeField] private Text numberOfQuestionsAnsweredText;
-    private static int _numberOfQuestionsAnswered;
+    private static int _numberOfQuestionsAnswered = 1;
     [SerializeField] private int playerPoints;
     [SerializeField] private Animator animator;
+    [SerializeField]private UI_System UIManager;
+    [SerializeField] private UI_Screen interventionScreen;
+    [SerializeField] private UI_Screen finishScreen;
+    [SerializeField] private Text isCorrectText;
     private void Start()
     {
         if (_unansweredQuestions == null || _unansweredQuestions.Count == 0)
         {
             _unansweredQuestions = questions.ToList<Questions>();
         }
-
-       // if (_numberOfQuestionsAnswered == 5)
-        //{
-            
-       // }
-
         SetCurrentQuestion();
-        trueAnswerText.gameObject.SetActive(false);
-        falseAnswerText.gameObject.SetActive(false);
+
+        numberOfQuestionsAnsweredText.text = _numberOfQuestionsAnswered + " of 5";
+
+       
+       
     }
 
     private void SetCurrentQuestion()
@@ -49,17 +51,10 @@ public class GameManager : MonoBehaviour
 
         questionText.text = _currentQuestion.textQuestion;
         questionImage.sprite = _currentQuestion.imageQuestion;
+        trueAnswerText.text = _currentQuestion.TrueAnswerText;
+        falseAnswerText.text = _currentQuestion.falseAnswerText;
 
-        if (_currentQuestion.isClickTrue)
-        {
-            trueAnswerText.text = "CORRECT\n+10 POINTS";
-            falseAnswerText.text = "WRONG\n-10 POINTS";
-        }
-        else
-        {
-            trueAnswerText.text = "WRONG\n-10 POINTS";
-            falseAnswerText.text = "CORRECT\n+10 POINTS";
-        }
+       
 
 
 
@@ -77,43 +72,96 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitForSeconds(delay);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        UIManager.SwitchScreens(interventionScreen);
     }
 
     public void UserSelectsTrue()
     {
-        animator.SetTrigger("FalseIgnore");
+
+       
+        UnityMessageManager.Instance.SendMessageToRN("True Button Tapped");
         if (_currentQuestion.isClickTrue)
         {
             //correct
             interventionText.text = _currentQuestion.correctIntervention;
+            animator.SetTrigger("TrueCorrect");
+            isCorrectText.text = "CORRECT\n+10 POINTS";
         }
         else
         {
             //false
             interventionText.text = _currentQuestion.wrongIntervention;
-            
-        }
+            animator.SetTrigger("TrueWrong");
+            isCorrectText.text = "WRONG\n-10 POINTS";
 
+        }
+        
+
+
+
+    }
+
+    public void PresentQuestion()
+    {
+        if (_numberOfQuestionsAnswered > 5)
+        {
+
+            UIManager.SwitchScreens(finishScreen);
+
+        }
+        else
+        {
+           
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
        
 
     }
     
     public void UserSelectsFalse()
     {
-        animator.SetTrigger("TrueClick");
-        if (!_currentQuestion.isClickTrue)
-        {
+        //animator.SetTrigger("TrueWrong");
+        UnityMessageManager.Instance.SendMessageToRN("False Button Tapped");
+         if (!_currentQuestion.isClickTrue)
+          {
             //correct
             interventionText.text = _currentQuestion.correctIntervention;
+            animator.SetTrigger("FalseCorrect");
+            isCorrectText.text = "CORRECT\n+10 POINTS";
+
         }
-        else
-        {
+          else
+          {
             //false
             interventionText.text = _currentQuestion.wrongIntervention;
+            animator.SetTrigger("FalseWrong");
+            isCorrectText.text = "WRONG\n-10 POINTS";
         }
-
+       
     }
-    
-    
+
+    public void Finish()
+    {
+        UnityMessageManager.Instance.SendMessageToRN("Finish");
+    }
+
+   
+
+    void Awake()
+    {
+        UnityMessageManager.Instance.OnMessage += RecieveMessage;
+    }
+
+    void onDestroy()
+    {
+        UnityMessageManager.Instance.OnMessage -= RecieveMessage;
+    }
+
+    void RecieveMessage(string message)
+    {
+       
+    }
+
+
 }

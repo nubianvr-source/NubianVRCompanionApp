@@ -9,5 +9,7 @@ public class Questions
     public bool isClickTrue;
     public string correctIntervention;
     public string wrongIntervention;
+    public string TrueAnswerText;
+    public string falseAnswerText;
 
 }
