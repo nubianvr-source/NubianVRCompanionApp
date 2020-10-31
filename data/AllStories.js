@@ -96,7 +96,7 @@ const stories = [
         isPaused: true,
       },
       {
-        id: ,
+        id: 10,
         url:
           'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/IMG_4748.JPG?alt=media&token=88fb1246-a98b-4feb-9598-c4c468bfcccd',
         type: 'image',
