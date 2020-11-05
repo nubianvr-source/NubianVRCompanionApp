@@ -13,9 +13,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const OnlineSafetyModule = ({navigation}) => {
   const [lessons, setPeople] = useState([
-    {name: 'Protecting your Personal Information', id: '1'},
-    {name: 'Spotting Bad Actors', id: '2'},
-    {name: 'Understanding Fake News', id: '3'},
+    {name: "Stop, Don't Click Strange Links", id: '1'},
+    /*{name: 'Spotting Bad Actors', id: '2'},
+    {name: 'Understanding Fake News', id: '3'},*/
   ]);
 
   const {colors} = useTheme();

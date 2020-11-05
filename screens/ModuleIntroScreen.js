@@ -25,7 +25,7 @@ const ModuleIntroScreen = ({navigation}) => {
       image: require('../assets/img/interactiveVideo.png'),
       key: '2',
     },
-    {
+    /*{
       name: 'Reflections',
       image: require('../assets/img/reflections.png'),
       key: '3',
@@ -39,11 +39,11 @@ const ModuleIntroScreen = ({navigation}) => {
       name: 'Virtual Reality Experiences',
       image: require('../assets/img/immersive.png'),
       key: '5',
-    },
+    },*/
     {
       name: 'Minigames',
       image: require('../assets/img/minigames.png'),
-      key: '6',
+      key: '3',
     },
   ]);
 
@@ -54,14 +54,16 @@ const ModuleIntroScreen = ({navigation}) => {
         style={styles.moduleBanner}
       />
       <View style={styles.view}>
-        <Text style={styles.headerTitle}>This is the Lesson Title</Text>
-        <Text style={styles.subtitle}>Module Subtitle</Text>
+        <Text style={styles.headerTitle}>Stop, Don't Click Strange Links</Text>
+        <Text style={styles.subtitle}>To avoid opening harmful links</Text>
       </View>
       <View style={styles.baseView}>
         <Text style={styles.text}>
-          This will contain the lesson overview. A simple summary of what to
-          expect throughout the course. Also, to excite learners to want to
-          learn this topic. Lifelong learning for the win.
+          On your screen you are shown lots of different links and their
+          subjects (eg. Click to win an iPhone, Watch this new video from Crash
+          Course). You are challenged to get as many coins by trying to click
+          only appropriate links. Anytime you click a harmful link, you will be
+          attacked by a virus and you will lose coins.
         </Text>
       </View>
       <TouchableOpacity
@@ -86,7 +88,9 @@ const ModuleIntroScreen = ({navigation}) => {
         <Text style={styles.text}>5. How To: Secure Your Online Presence</Text>
         <Text style={styles.text}>6. Reflection: What’s next from here</Text>
       </View>
-      <TouchableOpacity style={styles.enrollBtnInvert}>
+      <TouchableOpacity
+        style={styles.enrollBtnInvert}
+        onPress={() => navigation.navigate('Lesson Slides')}>
         <Text style={styles.enrollTxtInvert}>Start Lesson</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -116,6 +120,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik-Regular',
     color: '#fff',
     marginBottom: 10,
+    textAlign: 'justify',
   },
   textHedear: {
     fontSize: 12,
