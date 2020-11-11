@@ -27,7 +27,7 @@ const App: () => React$Node = () => {
   const onUnityMessage = (hander) => {
     console.log({hander});
     if (hander == 'Finish') {
-      navigation.navigate('Online Safety Lesson');
+      navigation.navigate('LessonEnd');
     }
   };
 

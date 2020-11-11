@@ -147,7 +147,7 @@ const StoryContainer = (props) => {
 
           {loading()}
 
-          {isReadMore && <Readmore onReadMore={onReadMoreOpen} />}
+          {/*{isReadMore && <Readmore onReadMore={onReadMoreOpen} />}*/}
 
           <ProgressArray
             next={nextStory}
