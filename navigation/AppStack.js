@@ -6,6 +6,7 @@ import ModuleIntoScreen from '../screens/ModuleIntroScreen';
 import Slider from '../screens/InteractiveSlides';
 import GameView from '../screens/GameScreen';
 import PreferencesScreen from '../screens/PreferencesScreen';
+import LessonEndTipScreen from '../screens/FinalTipScreen';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,11 @@ const AppStack = ({navigation}) => {
         component={GameView}
       />
       <Stack.Screen name="Preferences" component={PreferencesScreen} />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="LessonEnd"
+        component={LessonEndTipScreen}
+      />
     </Stack.Navigator>
   );
 };

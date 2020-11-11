@@ -61,7 +61,7 @@ const InteractiveSlides = ({navigation}) => {
   );
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      onStorySelect(1);
+      onStorySelect(0);
     });
 
     // Return the function to unsubscribe from the event so it gets removed on unmount

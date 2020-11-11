@@ -12,6 +12,8 @@ target 'NubianVRCompanionApp' do
 
   pod 'react-native-video', :path => '../node_modules/react-native-video'
 
+  pod 'react-native-video-cache', :path => '../node_modules/react-native-video-cache'
+
   target 'NubianVRCompanionAppTests' do
     inherit! :complete
     # Pods for testing

@@ -4,6 +4,8 @@ import {Dimensions, Image, StyleSheet, View} from 'react-native';
 import Video from 'react-native-video';
 // import Image from 'react-native-scalable-image';
 import PropTypes from 'prop-types';
+import Loader from '../LoaderComponent';
+import convertToProxyURL from 'react-native-video-cache';
 
 const ScreenWidth = Dimensions.get('window').width;
 
@@ -13,11 +15,6 @@ const Story = (props) => {
 
   return (
     <View style={styles.container}>
-      {/* {!props.isLoaded && (
-      <View style={styles.loading}>
-        <ActivityIndicator color="white" />
-      </View>
-      )} */}
       {type === 'image' ? (
         <Image
           source={{uri: url}}
@@ -28,7 +25,7 @@ const Story = (props) => {
         />
       ) : (
         <Video
-          source={{uri: url}}
+          source={{uri: convertToProxyURL(url)}}
           paused={props.pause || props.isNewStory}
           onLoad={(item) => props.onVideoLoaded(item)}
           style={styles.content}
