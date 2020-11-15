@@ -6,7 +6,8 @@ const stories = [
     stories: [
       {
         id: 1,
-        url: require('../assets/img/lessonIntroSlides/InteractiveSlides.001.png'),
+        url:
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/InteractiveSlides.001.png?alt=media&token=b2f0b6bc-8a2e-45bc-918e-b9ce7f586aa0',
         type: 'image',
         duration: 2,
         isReadMore: false,

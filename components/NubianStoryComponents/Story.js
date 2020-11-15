@@ -20,7 +20,7 @@ const Story = (props) => {
           source={{uri: url}}
           onLoadEnd={props.onImageLoaded}
           style={styles.content}
-          resizeMode="stretch"
+          resizeMode="contain"
           width={ScreenWidth}
         />
       ) : (

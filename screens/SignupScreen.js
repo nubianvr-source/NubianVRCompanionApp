@@ -9,14 +9,35 @@ import {
   Platform,
 } from 'react-native';
 import {AuthContext} from '../navigation/AuthProvider';
+import TextBox from '../components/TextBox';
 
 const SignupScreen = ({navigation}) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [displayName, setDisplayName] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
 
-  const {register} = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const [userNameError, setUserNameError] = useState(null);
+  const [userNameErrorWarning, setUserNameErrorWarning] = useState(null);
 
+  const checkTextBoxInput = () => {
+    if (!displayName.trim()) {
+      setUserNameError('Please Enter a username');
+      setUserNameErrorWarning('warning');
+      return;
+    }
+    if (!email.trim()) {
+      authContext.setEmailError('Please enter an e-mail address');
+      authContext.setShowEmailWarning('warning');
+      return;
+    }
+    if (!password.trim()) {
+      authContext.setPasswordError('Please enter a password');
+      authContext.setShowPasswordWarning('warning');
+      return;
+    }
+    authContext.register(email, password, displayName);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.headerTextView}>
@@ -26,63 +47,57 @@ const SignupScreen = ({navigation}) => {
           Nubian Mobile.
         </Text>
       </View>
-      <View style={styles.textInputView}>
-        <Text style={styles.textInputHeaderText}>
-          Please enter your username
-        </Text>
-        <TextInput
-          placeholder="Andy"
-          placeholderTextColor="#ffffff8c"
-          keyboardType="default"
-          style={[
-            styles.textInput,
-            {
-              color: '#ffffff',
-            },
-          ]}
-          autoCapitalize="words"
-          onChangeText={(userdisplayName) => setDisplayName(userdisplayName)}
-        />
-      </View>
-      <View style={styles.textInputView}>
-        <Text style={styles.textInputHeaderText}>Please enter your e-mail</Text>
-        <TextInput
-          placeholder="hello@nubianvr.com"
-          placeholderTextColor="#ffffff8c"
-          keyboardType="email-address"
-          style={[
-            styles.textInput,
-            {
-              color: '#ffffff',
-            },
-          ]}
-          autoCapitalize="none"
-          onChangeText={(userEmail) => setEmail(userEmail)}
-        />
-      </View>
-      <View style={styles.textInputView}>
-        <Text style={styles.textInputHeaderText}>Enter your Password</Text>
-        <TextInput
-          placeholder=""
-          placeholderTextColor="#ffffff8c"
-          style={[
-            styles.textInput,
-            {
-              color: '#ffffff',
-            },
-          ]}
-          autoCapitalize="none"
-          secureTextEntry={true}
-          onChangeText={(userPassword) => setPassword(userPassword)}
-        />
-      </View>
+      <TextBox
+        placeholder="Andy"
+        textInputHeaderDisplayText="Please enter your username"
+        keyboardType="default"
+        autoCapitalize="words"
+        onChangeText={(userdisplayName) => {
+          setDisplayName(userdisplayName);
+          setUserNameError('');
+          setUserNameErrorWarning('');
+        }}
+        errorDisplayText={userNameError}
+        iconType={userNameErrorWarning}
+      />
+
+      <TextBox
+        placeholder="hello@nubianvr.com"
+        textInputHeaderDisplayText="Please enter your e-mail"
+        keyboardType="email-address"
+        autoCapitalize="none"
+        onChangeText={(userEmail) => {
+          setEmail(userEmail);
+          authContext.setEmailError('');
+          authContext.setShowEmailWarning('');
+        }}
+        errorDisplayText={authContext.emailError}
+        iconType={authContext.showEmailWarning}
+      />
+      <TextBox
+        placeholder=""
+        textInputHeaderDisplayText="Enter your Password"
+        autoCapitalize="none"
+        secureTextEntry={true}
+        onChangeText={(userPassword) => {
+          setPassword(userPassword);
+          authContext.setPasswordError('');
+          authContext.setShowPasswordWarning('');
+        }}
+        errorDisplayText={authContext.passwordError}
+        iconType={authContext.showPasswordWarning}
+      />
       <TouchableOpacity
         style={styles.loginBtn}
-        onPress={() => register(email, password, displayName)}>
+        onPress={() => checkTextBoxInput()}>
         <Text style={styles.loginBtnText}>Create Account</Text>
       </TouchableOpacity>
       <View style={styles.accountInfoView}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+            authContext.clearErrors();
+          }}>
           <Text style={styles.accountInfoNormalText}>
             Already have an account?
             <Text style={styles.accountInfoHighlightedText}> Log In</Text>
@@ -105,6 +120,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#000000',
     flex: 1,
+    justifyContent: 'center',
   },
   logo: {
     height: 45,
@@ -131,7 +147,6 @@ const styles = StyleSheet.create({
   imgView: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
   },
   accountInfoNormalText: {
     fontSize: 12,

@@ -3,9 +3,8 @@ import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {AuthContext} from '../navigation/AuthProvider';
 import TextBox from '../components/TextBox';
 
-const LoginScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const ForgottenPasswordScreen = ({navigation}) => {
+  const [email, setEmail] = useState();
 
   const authContext = useContext(AuthContext);
   const checkTextBoxInput = () => {
@@ -14,21 +13,18 @@ const LoginScreen = ({navigation}) => {
       authContext.setShowEmailWarning('warning');
       return;
     }
-    if (!password.trim()) {
-      authContext.setPasswordError('Please enter a password');
-      authContext.setShowPasswordWarning('warning');
-      return;
-    }
-    authContext.login(email, password);
+
+    authContext.forgotPassword(email);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.headerTextView}>
-        <Text style={styles.headerText}>Fun and Games</Text>
+        <Text style={styles.headerText}>Reset Password</Text>
         <Text style={styles.headerSubtitle}>
-          Please provide your username and password to access your account on
-          Nubian Mobile.
+          Please provide your e-mail address. An email will be sent to you with
+          a new password, you can change your password in your user settings
+          after logging in.
         </Text>
       </View>
       <TextBox
@@ -44,54 +40,13 @@ const LoginScreen = ({navigation}) => {
         errorDisplayText={authContext.emailError}
         iconType={authContext.showEmailWarning}
       />
-      <TextBox
-        placeholder=""
-        textInputHeaderDisplayText="Enter your Password"
-        autoCapitalize="none"
-        secureTextEntry={true}
-        onChangeText={(userPassword) => {
-          setPassword(userPassword);
-          authContext.setPasswordError('');
-          authContext.setShowPasswordWarning('');
-        }}
-        errorDisplayText={authContext.passwordError}
-        iconType={authContext.showPasswordWarning}
-      />
-      <View style={styles.accountInfoView}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('SignUpScreen');
-            authContext.clearErrors();
-          }}>
-          <Text style={styles.accountInfoNormalText}>
-            Don't have an account?
-            <Text style={styles.accountInfoHighlightedText}>
-              {' '}
-              Create Account
-            </Text>
-          </Text>
-        </TouchableOpacity>
-      </View>
+
       <TouchableOpacity
         style={styles.loginBtn}
         onPress={() => checkTextBoxInput()}>
-        <Text style={styles.loginBtnText}>Login</Text>
+        <Text style={styles.loginBtnText}>Reset Password</Text>
       </TouchableOpacity>
-      <View style={styles.accountInfoView}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Forgot Password');
-            authContext.clearErrors();
-          }}>
-          <Text style={styles.accountInfoNormalText}>
-            Forgot your account?
-            <Text style={styles.accountInfoHighlightedText}>
-              {' '}
-              Reset Password
-            </Text>
-          </Text>
-        </TouchableOpacity>
-      </View>
+
       <View style={styles.imgView}>
         <Image
           source={require('../assets/nubianLogo.png')}
@@ -102,7 +57,7 @@ const LoginScreen = ({navigation}) => {
   );
 };
 
-export default LoginScreen;
+export default ForgottenPasswordScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -130,6 +85,7 @@ const styles = StyleSheet.create({
   imgView: {
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 50,
   },
   accountInfoNormalText: {
     fontSize: 12,
