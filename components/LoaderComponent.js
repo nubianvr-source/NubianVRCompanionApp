@@ -3,11 +3,11 @@ import {StyleSheet, View} from 'react-native';
 import AnimatedLoader from 'react-native-animated-loader';
 
 const Loader = (props) => {
-  const {visible} = props;
+  const {visible, overlayColor} = props;
   return (
     <AnimatedLoader
       visible={visible}
-      overlayColor="rgba(0,0,0,0.75)"
+      overlayColor={overlayColor}
       source={require('../lottie/lottieloading.json')}
       animationStyle={styles.lottie}
       speed={1}

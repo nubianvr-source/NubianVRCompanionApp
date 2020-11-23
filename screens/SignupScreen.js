@@ -54,8 +54,8 @@ const SignupScreen = ({navigation}) => {
         autoCapitalize="words"
         onChangeText={(userdisplayName) => {
           setDisplayName(userdisplayName);
-          setUserNameError('');
-          setUserNameErrorWarning('');
+          setUserNameError(null);
+          setUserNameErrorWarning(null);
         }}
         errorDisplayText={userNameError}
         iconType={userNameErrorWarning}
@@ -68,8 +68,8 @@ const SignupScreen = ({navigation}) => {
         autoCapitalize="none"
         onChangeText={(userEmail) => {
           setEmail(userEmail);
-          authContext.setEmailError('');
-          authContext.setShowEmailWarning('');
+          authContext.setEmailError(null);
+          authContext.setShowEmailWarning(null);
         }}
         errorDisplayText={authContext.emailError}
         iconType={authContext.showEmailWarning}
@@ -81,8 +81,8 @@ const SignupScreen = ({navigation}) => {
         secureTextEntry={true}
         onChangeText={(userPassword) => {
           setPassword(userPassword);
-          authContext.setPasswordError('');
-          authContext.setShowPasswordWarning('');
+          authContext.setPasswordError(null);
+          authContext.setShowPasswordWarning(null);
         }}
         errorDisplayText={authContext.passwordError}
         iconType={authContext.showPasswordWarning}

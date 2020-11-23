@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Entypo';
 
 import HomeScreen from './HomeScreen';
 import LessonsScreen from './LessonsScreen';
@@ -156,7 +156,22 @@ const RoomsStackScreen = ({navigation}) => (
         fontFamily: 'Rubik-Medium',
       },
     }}>
-    <RoomsStack.Screen name="Rooms" component={RoomsScreen} />
+    <RoomsStack.Screen
+      name="Rooms"
+      component={RoomsScreen}
+      options={{
+        headerRight: () => (
+          <TouchableOpacity onPress={() => navigation.navigate('Create Room')}>
+            <Icon
+              name="new-message"
+              color="#41b7e9"
+              size={15}
+              style={styles.profileTabImage}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    />
   </RoomsStack.Navigator>
 );
 const ProfileStackScreen = ({navigation}) => (
@@ -203,6 +218,5 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     marginRight: 10,
-    resizeMode: 'stretch',
   },
 });

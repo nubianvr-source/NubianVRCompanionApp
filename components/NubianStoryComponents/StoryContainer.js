@@ -96,7 +96,7 @@ const StoryContainer = (props) => {
               story={story}
             />
           </View>
-          <Loader visible={!isLoaded} />
+          <Loader visible={!isLoaded} overlayColor="rgba(0,0,0,0.75)" />
         </View>
       );
     }

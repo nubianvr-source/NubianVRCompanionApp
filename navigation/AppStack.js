@@ -7,6 +7,8 @@ import Slider from '../screens/InteractiveSlides';
 import GameView from '../screens/GameScreen';
 import PreferencesScreen from '../screens/PreferencesScreen';
 import LessonEndTipScreen from '../screens/FinalTipScreen';
+import CreateRoomsScreen from '../screens/CreateRoomScreen';
+import RoomsChatScreen from '../screens/RoomsChatScreen';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +50,14 @@ const AppStack = ({navigation}) => {
         options={{headerShown: false}}
         name="LessonEnd"
         component={LessonEndTipScreen}
+      />
+      <Stack.Screen name="Create Room" component={CreateRoomsScreen} />
+      <Stack.Screen
+        name="Room"
+        component={RoomsChatScreen}
+        options={({route}) => ({
+          title: route.params.thread.name,
+        })}
       />
     </Stack.Navigator>
   );

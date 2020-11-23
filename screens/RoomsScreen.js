@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,21 +8,78 @@ import {
   Dimensions,
   ScrollView,
   ToastAndroid,
+  FlatList,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {AuthContext} from '../navigation/AuthProvider';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {List} from 'react-native-paper';
+import firestore from '@react-native-firebase/firestore';
+
+import Loading from '../components/LoaderComponent';
 
 const {height, width} = Dimensions.get('screen');
 
 const RoomsScreen = ({navigation}) => {
   const {colors} = useTheme();
   const theme = useTheme();
+  const [threads, setThreads] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = firestore()
+      .collection('THREADS')
+      // add this
+      .orderBy('latestMessage.createdAt', 'desc')
+      .onSnapshot((querySnapshot) => {
+        const threads = querySnapshot.docs.map((documentSnapshot) => {
+          return {
+            _id: documentSnapshot.id,
+            name: '',
+            // add this
+            latestMessage: {
+              text: '',
+            },
+            // ---
+            ...documentSnapshot.data(),
+          };
+        });
+
+        setThreads(threads);
+
+        if (loading) {
+          setLoading(false);
+        }
+      });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
-      <ScrollView>
+      {loading == true ? (
+        <Loading visible={loading} overlayColor="rgba(0,0,0,0)" />
+      ) : (
+        <FlatList
+          data={threads}
+          keyExtractor={(item) => item._id}
+          //ItemSeparatorComponent={() => <Divider />}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Room', {thread: item})}>
+              <View style={styles.roomListItemContainer}>
+                <View style={{backgroundColor: '#93D10F', width: 2}} />
+                <View style={styles.roomListItemView}>
+                  <Text style={styles.roomModule}>Online Safety</Text>
+                  <Text style={styles.roomTopicText}>{item.name}</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      )}
+      {/*<ScrollView>
         <TouchableOpacity
           onPress={() =>
             ToastAndroid.show('Rooms are not ready yet!', ToastAndroid.SHORT)
@@ -37,7 +94,7 @@ const RoomsScreen = ({navigation}) => {
             </View>
           </View>
         </TouchableOpacity>
-      </ScrollView>
+      </ScrollView>*/}
     </View>
   );
 };
@@ -79,5 +136,11 @@ const styles = StyleSheet.create({
   },
   textboxContainer: {
     maxHeight: 150,
+  },
+  listTitle: {
+    fontSize: 22,
+  },
+  listDescription: {
+    fontSize: 16,
   },
 });

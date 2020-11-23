@@ -145,7 +145,7 @@ export const AuthProvider = ({children}) => {
         },
       }}>
       {children}
-      <LoaderComp visible={visible} />
+      <LoaderComp visible={visible} overlayColor="rgba(0,0,0,0.75)" />
     </AuthContext.Provider>
   );
 };

@@ -38,8 +38,8 @@ const LoginScreen = ({navigation}) => {
         autoCapitalize="none"
         onChangeText={(userEmail) => {
           setEmail(userEmail);
-          authContext.setEmailError('');
-          authContext.setShowEmailWarning('');
+          authContext.setEmailError(null);
+          authContext.setShowEmailWarning(null);
         }}
         errorDisplayText={authContext.emailError}
         iconType={authContext.showEmailWarning}
@@ -51,8 +51,8 @@ const LoginScreen = ({navigation}) => {
         secureTextEntry={true}
         onChangeText={(userPassword) => {
           setPassword(userPassword);
-          authContext.setPasswordError('');
-          authContext.setShowPasswordWarning('');
+          authContext.setPasswordError(null);
+          authContext.setShowPasswordWarning(null);
         }}
         errorDisplayText={authContext.passwordError}
         iconType={authContext.showPasswordWarning}
