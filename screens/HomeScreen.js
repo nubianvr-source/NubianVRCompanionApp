@@ -24,9 +24,17 @@ const HomeScreen = ({navigation}) => {
           to build your feed.
         </Text>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Lessons')}>
+      <TouchableOpacity
+        style={styles.goToLessonBtn}
+        onPress={() => navigation.navigate('Lessons')}>
         <Text style={styles.highlightedText}>
           Go to Lesson
+          <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Game')}>
+        <Text style={styles.highlightedText}>
+          Go Narrative Game Model
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
         </Text>
       </TouchableOpacity>
@@ -50,6 +58,9 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontFamily: 'Rubik-Regular',
     textAlign: 'center',
+  },
+  goToLessonBtn: {
+    margin: 20,
   },
   nubianLogo: {
     height: 45,
