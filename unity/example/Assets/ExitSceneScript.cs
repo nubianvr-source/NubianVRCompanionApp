@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitSceneScript : MonoBehaviour
 {
@@ -19,5 +20,6 @@ public class ExitSceneScript : MonoBehaviour
     {
         UnityMessageManager.Instance.SendMessageToRN("Finish");
         Debug.Log("Finish");
+        SceneManager.LoadScene("StartScene");
     }
 }

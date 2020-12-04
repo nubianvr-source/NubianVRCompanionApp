@@ -8,6 +8,7 @@ using System.Linq;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 using NubianVR.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float delay = 0.5f;
     [SerializeField] private Text trueAnswerText;
     [SerializeField] private Text falseAnswerText;
-    [SerializeField] private Text interventionText;
+    [SerializeField] private TMP_Text interventionText;
     [SerializeField] private Text playerPointsText;
     [SerializeField] private Text numberOfQuestionsAnsweredText;
     private static int _numberOfQuestionsAnswered = 1;
@@ -29,7 +30,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]private UI_System UIManager;
     [SerializeField] private UI_Screen interventionScreen;
     [SerializeField] private UI_Screen finishScreen;
-    [SerializeField] private Text isCorrectText;
+    [SerializeField] private TMP_Text questionPoints;
+    [SerializeField] private Button trueButton;
+    [SerializeField] private Button falseButton;
+
+
     private void Start()
     {
         if (_unansweredQuestions == null || _unansweredQuestions.Count == 0)
@@ -40,8 +45,10 @@ public class GameManager : MonoBehaviour
 
         numberOfQuestionsAnsweredText.text = _numberOfQuestionsAnswered + " of 5";
 
-       
-       
+        EnableButtons();
+        Screen.orientation = ScreenOrientation.Portrait;
+
+
     }
 
     private void SetCurrentQuestion()
@@ -78,22 +85,22 @@ public class GameManager : MonoBehaviour
 
     public void UserSelectsTrue()
     {
-
-       
+        //DisableButtons();
+        //Look at the Target Raycast for Fader, thats what temporarily disables the button
         UnityMessageManager.Instance.SendMessageToRN("True Button Tapped");
         if (_currentQuestion.isClickTrue)
         {
             //correct
             interventionText.text = _currentQuestion.correctIntervention;
             animator.SetTrigger("TrueCorrect");
-            isCorrectText.text = "CORRECT\n+10 POINTS";
+            questionPoints.text = "CORRECT\n+10 POINTS";
         }
         else
         {
             //false
             interventionText.text = _currentQuestion.wrongIntervention;
             animator.SetTrigger("TrueWrong");
-            isCorrectText.text = "WRONG\n-10 POINTS";
+            questionPoints.text = "WRONG\n-10 POINTS";
 
         }
         
@@ -101,8 +108,18 @@ public class GameManager : MonoBehaviour
 
 
     }
+    private void EnableButtons() {
+        trueButton.interactable = true;
+        falseButton.interactable = true;
+    }
 
-    public void PresentQuestion()
+    private void DisableButtons()
+    {
+        trueButton.interactable = false;
+        falseButton.interactable = false;
+    }
+
+    public void PresentQuestion(float time)
     {
         if (_numberOfQuestionsAnswered > 5)
         {
@@ -112,23 +129,31 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-           
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(ReloadSceneForNextQuestion(time));
+            
         }
        
 
+    }
+
+    IEnumerator ReloadSceneForNextQuestion(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void UserSelectsFalse()
     {
         //animator.SetTrigger("TrueWrong");
+        //DisableButtons();
+        //Look at the Target Raycast for Fader, thats what temporarily disables the button
         UnityMessageManager.Instance.SendMessageToRN("False Button Tapped");
          if (!_currentQuestion.isClickTrue)
           {
             //correct
             interventionText.text = _currentQuestion.correctIntervention;
             animator.SetTrigger("FalseCorrect");
-            isCorrectText.text = "CORRECT\n+10 POINTS";
+            questionPoints.text = "CORRECT\n+10 POINTS";
 
         }
           else
@@ -136,14 +161,15 @@ public class GameManager : MonoBehaviour
             //false
             interventionText.text = _currentQuestion.wrongIntervention;
             animator.SetTrigger("FalseWrong");
-            isCorrectText.text = "WRONG\n-10 POINTS";
+            questionPoints.text = "WRONG\n-10 POINTS";
         }
        
     }
 
     public void Finish()
     {
-        UnityMessageManager.Instance.SendMessageToRN("Finish");
+        //UnityMessageManager.Instance.SendMessageToRN("Finish");
+        SceneManager.LoadScene("ExitScene");
     }
 
    
@@ -160,7 +186,7 @@ public class GameManager : MonoBehaviour
 
     void RecieveMessage(string message)
     {
-       
+        
     }
 
 

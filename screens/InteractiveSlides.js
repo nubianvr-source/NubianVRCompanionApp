@@ -30,7 +30,7 @@ const InteractiveSlides = ({navigation}) => {
 
   const onStoryNext = (isScroll) => {
     setModel(false);
-    navigation.navigate('Game');
+    navigation.navigate('Game', {level: 'TrueFalseModel'});
   };
 
   const onStoryPrevious = (isScroll) => {
