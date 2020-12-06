@@ -21,18 +21,21 @@ import UnityView, {UnityModule} from '@asmadsen/react-native-unity-view';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 
-const App: (route) => React$Node = () => {
+const GameScreen = ({route}) => {
   const [count, setClickCount] = useState(0);
   console.log(count);
+
+  //const {level} = route.params;
+
   const onUnityMessage = (hander) => {
     console.log({hander});
-    if (hander == 'Finish') {
-      navigation.navigate('LessonEnd');
-    }
-      else(hander == "SceneToLoad")
-      {
-        UnityModule.postMessageToUnityManager(JSON.stringify(level));
-      }
+    switch (hander) {
+      case 'Finish':
+        navigation.navigate('LessonEnd');
+        break;
+      case 'SceneToLoad':
+        UnityModule.postMessageToUnityManager(route.params.level);
+        break;
     }
   };
 
@@ -107,4 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default GameScreen;

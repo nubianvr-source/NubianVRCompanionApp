@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -10,8 +10,10 @@ import {
 import {AuthContext} from '../navigation/AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation: {navigate}}) => {
   const {user, logout} = useContext(AuthContext);
+  //const [loadLevel, setLoadLevel] = useState('TheHunter');
+
   return (
     <View style={styles.container}>
       <Image
@@ -26,14 +28,13 @@ const HomeScreen = ({navigation}) => {
       </View>
       <TouchableOpacity
         style={styles.goToLessonBtn}
-        onPress={() => navigation.navigate('Lessons')}>
+        onPress={() => navigate('Lessons')}>
         <Text style={styles.highlightedText}>
           Go to Lesson
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={(() => navigation.navigate('Game'), {level: 'TheHunter'})}>
+      <TouchableOpacity onPress={() => navigate('Game', {level: 'TheHunter'})}>
         <Text style={styles.highlightedText}>
           Go Narrative Game Model
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />

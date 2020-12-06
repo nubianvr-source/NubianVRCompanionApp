@@ -1368,23 +1368,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questions:
-  - imageQuestion: {fileID: 21300000, guid: 98d3ea346b618da499ae0a3780678a7c, type: 3}
-    textQuestion: Does this image look stretched.
-    isClickTrue: 1
-    correctIntervention: Yes it is stretched.
-    wrongIntervention: How did you not see that it is stretched.
-    TrueAnswerText: Yes the image looks stretched.
-    falseAnswerText: No it doesn't look stretched at all.
-  - imageQuestion: {fileID: 21300000, guid: 29c435903c4f8404f87a061424329530, type: 3}
-    textQuestion: This is Lenna, you dont know her but a new a new friend request
-      just came from her to you. Do you accept?
+  - imageQuestion: {fileID: 21300000, guid: c124227b647ba456eae874b4d482d892, type: 3}
+    textQuestion: You are on Jumia.com searching for a phone to buy online and you
+      come across this advertisement. What will you do?
     isClickTrue: 0
-    correctIntervention: That was the right thing to do. You do not accept friend
-      request from strangers.
-    wrongIntervention: You should not have accepted that request, as it was from
-      a stranger and could be anyone .
-    TrueAnswerText: She doesn't look harmful why not?
-    falseAnswerText: I won't accept her friend request as I do not know her.
+    correctIntervention: Correct you saved yourself from the digital threat
+    wrongIntervention: "Danger! Danger!! Danger!!! If the subject of the link is
+      telling you, you can win free items, be careful! They may be lying. So it\u2019s
+      best to not click on it."
+    TrueAnswerText: Accept Offer
+    falseAnswerText: Ignore
+  - imageQuestion: {fileID: 21300000, guid: df99fd296418e4d179d3b51414b1af6a, type: 3}
+    textQuestion: Since COVID-19, your school (Lincoln) has transitioned to online
+      learning. One of the online tools your school uses to teach is Crash Course.
+      You have just received this email with the following details. What will you
+      do?
+    isClickTrue: 0
+    correctIntervention: Awesome! you saved yourself from the digital threat
+    wrongIntervention: "Danger! Danger!! Danger!!! Check the name / email address 
+      of the sender for spelling errors. Eg. Instead of Lincoln@gmail.com. They might
+      try and deceive you by replacing the \u201CL\u201D with the number 1 and the
+      m of .com with rn. "
+    TrueAnswerText: Watch Video
+    falseAnswerText: Ignore
+  - imageQuestion: {fileID: 21300000, guid: f3cd9d6459a33422f81970495ceef67f, type: 3}
+    textQuestion: ' You are browsing the internet you clicked on the link and this
+      page pop-up?'
+    isClickTrue: 0
+    correctIntervention: Correct you saved yourself from the digital threat
+    wrongIntervention: 'Red Alert! Red Alert!! Red Alert!!! Cyber criminals attempt
+      to trick users into believing that the system is infected so that they call
+      and pay for services that are not required.. This error can be easily removed
+      by simply closing the web browser '
+    TrueAnswerText: Call Now
+    falseAnswerText: Exit Tab
+  - imageQuestion: {fileID: 21300000, guid: b10bcb29a77b74106b747dbc75cf5ce6, type: 3}
+    textQuestion: 'You are on your favourite social media site chatting with your
+      friend. A day earlier you had revealed your relationship status to be single
+      on your profile. While chatting this pop-up. What will you do? '
+    isClickTrue: 0
+    correctIntervention: 'Correct you saved yourself from the digital threat '
+    wrongIntervention: "Red Alert! Red Alert!! Red Alert!!! You didn\u2019t initiate
+      this action. Dating sites require personal information about you that could
+      be used maliciously if it falls into the wrong hands "
+    TrueAnswerText: Download
+    falseAnswerText: Ignore
+  - imageQuestion: {fileID: 21300000, guid: b332031283f2a410ebbb865b4576f2ff, type: 3}
+    textQuestion: 'You are browsing the internet on your computer searching for a
+      game to play online and you come across this advertisement. What will you do? '
+    isClickTrue: 0
+    correctIntervention: 'Correct you saved yourself from the digital threat '
+    wrongIntervention: "Danger! Danger!! Danger!!! If the subject of the link is
+      telling you, you can win free items, be careful! They may be lying. So it\u2019s
+      best to not click on it."
+    TrueAnswerText: Download
+    falseAnswerText: Ignore
   questionText: {fileID: 1030194423}
   questionImage: {fileID: 288865959}
   delay: 3
@@ -3127,6 +3165,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720842802}
   m_CullTransparentMesh: 0
+--- !u!1 &762653799
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 762653801}
+  - component: {fileID: 762653800}
+  m_Layer: 0
+  m_Name: _FungusState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &762653800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762653799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedFlowchart: {fileID: 0}
+--- !u!4 &762653801
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762653799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882891507
 GameObject:
   m_ObjectHideFlags: 0
