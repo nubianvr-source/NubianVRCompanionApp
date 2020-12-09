@@ -9,6 +9,7 @@ import PreferencesScreen from '../screens/PreferencesScreen';
 import LessonEndTipScreen from '../screens/FinalTipScreen';
 import CreateRoomsScreen from '../screens/CreateRoomScreen';
 import RoomsChatScreen from '../screens/RoomsChatScreen';
+import PollsRoom from '../screens/PollsScreen';
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,7 @@ const AppStack = ({navigation}) => {
         component={LessonEndTipScreen}
       />
       <Stack.Screen name="Create Room" component={CreateRoomsScreen} />
+      <Stack.Screen name="Polls" component={PollsRoom} />
       <Stack.Screen
         name="Room"
         component={RoomsChatScreen}

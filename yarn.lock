@@ -769,6 +769,11 @@
     "@types/hoist-non-react-statics" "^3.3.1"
     hoist-non-react-statics "^3.3.0"
 
+"@freakycoder/react-native-bounceable@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@freakycoder/react-native-bounceable/-/react-native-bounceable-0.2.4.tgz#5347e1034ce4b48f0cad1ee5fcbef26c19c4fa3d"
+  integrity sha512-Gw9TuO65oCzYYz78RV6OtUjfdbYPdt2RIrDt441oo3JV8++aW9485z9GCqrqxNi1qCO8gC18iNkFLfBMhazZpA==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -5943,12 +5948,22 @@ react-native-3dcube-navigation@^1.0.4:
   dependencies:
     react "^16.2.0"
 
+react-native-animated-component@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-animated-component/-/react-native-animated-component-0.1.0.tgz#646e7a51850678406a08ff82279fca5df68e303d"
+  integrity sha512-wWnbsImUbMOWUWzTVQ4XrLTWaWCZGrjmFcK4rQFIwV4ADO78VVb19wPUS4hGxm/iSy8HB959iqvj9r15kyc0CA==
+
 react-native-animated-loader@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/react-native-animated-loader/-/react-native-animated-loader-0.0.8.tgz#5475166c2185da641c6a20477fc93819144383e8"
   integrity sha512-NFdAbMABoS1Gfv4BGYmVKAAK++y1cAPjooJefRAAOVC0ehUGsWpzu+AwvgJPmbTCAJ6xwXGzpDdvP1n/Bw/6ZA==
   dependencies:
     prop-types "^15.6.2"
+
+react-native-bounceable@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-bounceable/-/react-native-bounceable-0.2.1.tgz#1d033d8daf151390c11b085c57191e673afeba2c"
+  integrity sha1-HQM9ja8VE5DBGwhcVxkeZzr+uiw=
 
 react-native-communications@^2.2.1:
   version "2.2.1"
@@ -6014,6 +6029,11 @@ react-native-parsed-text@0.0.22:
   integrity sha512-hfD83RDXZf9Fvth3DowR7j65fMnlqM9PpxZBGWkzVcUTFtqe6/yPcIoIAgrJbKn6YmtzkivmhWE2MCE4JKBXrQ==
   dependencies:
     prop-types "^15.7.x"
+
+react-native-poll@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-poll/-/react-native-poll-0.1.2.tgz#f3c774ff0c00ca765b525c38ea22623a98708635"
+  integrity sha512-NN85vICNLHxqN7hzSnK4bOiRYI/oL8bWWych+yjbXvhjUxhXiIkzRRYH38rId87d1NsuCpoNG8LdY33nG4c0zA==
 
 react-native-reanimated@^1.13.1:
   version "1.13.1"

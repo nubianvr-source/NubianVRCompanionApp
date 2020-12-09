@@ -34,9 +34,20 @@ const HomeScreen = ({navigation: {navigate}}) => {
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigate('Game', {level: 'TheHunter'})}>
+      <TouchableOpacity
+        style={styles.goToLessonBtn}
+        onPress={() => navigate('Game', {level: 'TheHunter'})}>
         <Text style={styles.highlightedText}>
           Go Narrative Game Model
+          <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.goToLessonBtn}
+        onPress={() => navigate('Polls')}>
+        <Text style={styles.highlightedText}>
+          Take a poll on sports brands
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
         </Text>
       </TouchableOpacity>
@@ -62,7 +73,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   goToLessonBtn: {
-    margin: 20,
+    margin: 10,
   },
   nubianLogo: {
     height: 45,
