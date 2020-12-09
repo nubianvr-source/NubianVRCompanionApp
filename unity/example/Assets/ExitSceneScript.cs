@@ -21,5 +21,6 @@ public class ExitSceneScript : MonoBehaviour
         UnityMessageManager.Instance.SendMessageToRN("Finish");
         Debug.Log("Finish");
         SceneManager.LoadScene("StartScene");
+        
     }
 }
