@@ -72,9 +72,14 @@ const ModuleIntroScreen = ({navigation}) => {
         <Text style={styles.enrollTxt}>Enroll</Text>
       </TouchableOpacity>
       {sections.map((item) => {
-        return (
+        return item.key != 3 ? (
           <View key={item.key} style={styles.sectionsView}>
             <Image source={item.image} style={styles.sectionsLogo} />
+            <Text style={styles.sectionsText}>{item.name}</Text>
+          </View>
+        ) : (
+          <View key={item.key} style={styles.sectionsView}>
+            <Image source={item.image} style={{width: 15, height: 7}} />
             <Text style={styles.sectionsText}>{item.name}</Text>
           </View>
         );
@@ -192,7 +197,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   sectionsLogo: {
-    height: 15,
+    height: 19,
     width: 15,
   },
   enrollTxt: {

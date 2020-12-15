@@ -119,7 +119,7 @@ export const AuthProvider = ({children}) => {
               //navigation.goBack();
               Alert.alert(
                 'Succes',
-                'A password reset link has benn sent to your e-mail',
+                'A password reset link has been sent to your e-mail',
                 [
                   {
                     text: 'OK',

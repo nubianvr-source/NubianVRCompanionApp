@@ -27,33 +27,37 @@ const RoomsScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = firestore()
-      .collection('THREADS')
-      // add this
-      .orderBy('latestMessage.createdAt', 'desc')
-      .onSnapshot((querySnapshot) => {
-        const threads = querySnapshot.docs.map((documentSnapshot) => {
-          return {
-            _id: documentSnapshot.id,
-            name: '',
-            // add this
-            latestMessage: {
-              text: '',
-            },
-            // ---
-            ...documentSnapshot.data(),
-          };
-        });
-
-        setThreads(threads);
-
-        if (loading) {
-          setLoading(false);
-        }
-      });
+    async function unsubscribe() {
+      await loadRooms();
+    }
 
     return () => unsubscribe();
   }, []);
+
+  const loadRooms = firestore()
+    .collection('THREADS')
+    // add this
+    .orderBy('latestMessage.createdAt', 'desc')
+    .onSnapshot((querySnapshot) => {
+      const threads = querySnapshot.docs.map((documentSnapshot) => {
+        return {
+          _id: documentSnapshot.id,
+          name: '',
+          // add this
+          latestMessage: {
+            text: '',
+          },
+          // ---
+          ...documentSnapshot.data(),
+        };
+      });
+
+      setThreads(threads);
+
+      if (loading) {
+        setLoading(false);
+      }
+    });
 
   return (
     <View style={styles.container}>

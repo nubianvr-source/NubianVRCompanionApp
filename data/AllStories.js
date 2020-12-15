@@ -7,7 +7,7 @@ const stories = [
       {
         id: 1,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/InteractiveSlides.001.png?alt=media&token=b2f0b6bc-8a2e-45bc-918e-b9ce7f586aa0',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2Foutput_1.mp4?alt=media&token=9cd2d8f6-6619-4e79-819d-35df5788dfc5',
         type: 'image',
         duration: 2,
         isReadMore: false,
@@ -15,7 +15,7 @@ const stories = [
       {
         id: 2,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/IMG_6351.mp4?alt=media&token=e5e190b6-1068-465e-8024-1ce8b77b3e36',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2Foutput_2.mp4?alt=media&token=2788b87a-d143-4bbd-a8bc-d9347c2d5098',
         type: 'video',
         duration: 2,
         isReadMore: false,
@@ -23,7 +23,7 @@ const stories = [
       {
         id: 3,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/IMG_6352.mp4?alt=media&token=c960ba32-2264-4f51-beb5-f692b8d52ee4',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2Foutput_3.mp4?alt=media&token=7e5095d8-85a8-4f6d-bc32-7ea77779e9c1',
         type: 'video',
         duration: 2,
         isReadMore: false,
@@ -31,7 +31,7 @@ const stories = [
       {
         id: 4,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/IMG_6353.mp4?alt=media&token=e0f6d29d-a648-4a69-b45f-a22975d60c4f',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2Foutput_4.mp4?alt=media&token=71a580ee-1008-4b28-87e4-1e04f8a41f2e',
         type: 'video',
         duration: 2,
         isReadMore: false,
@@ -39,7 +39,7 @@ const stories = [
       {
         id: 5,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/IMG_6354.mp4?alt=media&token=d5fe44cd-9128-4266-96fe-64a97f754b4b',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2Foutput_5.mp4?alt=media&token=af25aae9-f79c-47bb-a238-dac9ef99fbe2',
         type: 'video',
         duration: 2,
         isReadMore: false,
@@ -47,7 +47,7 @@ const stories = [
       {
         id: 6,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/IMG_6355.mp4?alt=media&token=83c1ddc1-3add-4e60-b656-f636357e4b3b',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2Foutput_6.mp4?alt=media&token=42c4a518-e089-423f-90ae-95993da75f4b',
         type: 'video',
         duration: 2,
         isReadMore: false,
@@ -55,7 +55,7 @@ const stories = [
       {
         id: 7,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/IMG_6356.mp4?alt=media&token=a364cce8-cf15-4d74-b83c-241858bc4941',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2Foutput_7.mp4?alt=media&token=15320451-ab0e-433b-8454-528ddb40ed51',
         type: 'video',
         duration: 2,
         isReadMore: false,
