@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExitScene.unity
     guid: 9d8a9ef8633e348a18cea2e0995db9e4
+  - enabled: 1
+    path: Assets/Scenes/OnlineSafety/OnlineSafetyStoryGame.unity
+    guid: f5c818864eacf478f962bdea95a0495a
   m_configObjects: {}

@@ -36,7 +36,7 @@ const HomeScreen = ({navigation: {navigate}}) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.goToLessonBtn}
-        onPress={() => navigate('Game', {level: 'TheHunter'})}>
+        onPress={() => navigate('Game', {level: 'OnlineSafetyStoryGame'})}>
         <Text style={styles.highlightedText}>
           Go Narrative Game Model
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />

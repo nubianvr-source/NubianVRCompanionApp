@@ -34,7 +34,7 @@ public class StartSceneManagerScript : MonoBehaviour
             case "TrueFalseModel":
                 SceneManager.LoadScene(message);
                 break;
-            case "TheHunter":
+            case "OnlineSafetyStoryGame":
                 SceneManager.LoadScene(message);
                 break;
 
