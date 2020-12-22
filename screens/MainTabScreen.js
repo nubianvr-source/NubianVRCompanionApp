@@ -27,6 +27,11 @@ const MainTabScreen = () => (
       style: {
         backgroundColor: '#000000',
         borderTopWidth: 0,
+        height: 55,
+      },
+      labelStyle: {
+        fontSize: 13,
+        fontFamily: 'Rubik-Medium',
       },
     }}>
     <Tab.Screen
@@ -159,8 +164,8 @@ const RoomsStackScreen = ({navigation}) => (
     <RoomsStack.Screen
       name="Rooms"
       component={RoomsScreen}
-      options={{
-        headerRight: () => (
+      /* options={{
+       headerRight: () => (
           <TouchableOpacity onPress={() => navigation.navigate('Create Room')}>
             <Icon
               name="new-message"
@@ -170,7 +175,7 @@ const RoomsStackScreen = ({navigation}) => (
             />
           </TouchableOpacity>
         ),
-      }}
+      }}*/
     />
   </RoomsStack.Navigator>
 );
@@ -204,8 +209,8 @@ const ProfileStackScreen = ({navigation}) => (
 );
 const styles = StyleSheet.create({
   nubianLogo: {
-    height: 16,
-    width: 16,
+    height: 20,
+    width: 20,
     resizeMode: 'stretch',
   },
   lessonsTabImage: {

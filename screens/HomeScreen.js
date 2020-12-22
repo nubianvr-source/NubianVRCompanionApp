@@ -22,19 +22,20 @@ const HomeScreen = ({navigation: {navigate}}) => {
       />
       <View style={styles.emptyfeedView}>
         <Text style={styles.text}>
-          Your home feed is empty. Find a lesson you’re interested in to start
-          to build your feed.
+          {
+            'Welcome to the beta release of the Nubian Life Skills App.\n \nPlease note that the app is still in development and we greatly appreciate any feedback that can be provided to improve it.\n \n Please place all your bugs, issues & reccomendations in the chat room of the same name and we will get to work on it. You can find it by tapping the button below. Thank you and enjoy.'
+          }
         </Text>
       </View>
       <TouchableOpacity
         style={styles.goToLessonBtn}
-        onPress={() => navigate('Lessons')}>
+        onPress={() => navigate('Rooms')}>
         <Text style={styles.highlightedText}>
-          Go to Lesson
+          Go to Rooms
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/*<TouchableOpacity
         style={styles.goToLessonBtn}
         onPress={() => navigate('Game', {level: 'OnlineSafetyStoryGame'})}>
         <Text style={styles.highlightedText}>
@@ -45,13 +46,12 @@ const HomeScreen = ({navigation: {navigate}}) => {
 
       <TouchableOpacity
         style={styles.goToLessonBtn}
-        onPress={() => navigate('Polls')}>
+        onPress={() => navigate('LessonEnd')}>
         <Text style={styles.highlightedText}>
-          Take a poll on sports brands
+          Test
           <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />
         </Text>
-      </TouchableOpacity>
-      {/*<Button title="Logout" onPress={() => logout()} />*/}
+      </TouchableOpacity>*/}
     </View>
   );
 };

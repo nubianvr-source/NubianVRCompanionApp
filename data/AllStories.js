@@ -7,7 +7,7 @@ const stories = [
       {
         id: 1,
         url:
-          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/InteractiveSlides.001.png?alt=media&token=b2f0b6bc-8a2e-45bc-918e-b9ce7f586aa0',
+          'https://firebasestorage.googleapis.com/v0/b/nubianvr-companion-app.appspot.com/o/OnlineSafetyVideos%2FInteractiveSlides001.png?alt=media&token=e45cb66d-5fce-4d8d-974f-28a910c5f19a',
         type: 'image',
         duration: 2,
         isReadMore: false,
@@ -100,7 +100,7 @@ const stories = [
       },
     ],
   },
-  {
+  /*{
     username: 'Amit',
     title: 'Pune Dairies',
     profile: 'https://avatars0.githubusercontent.com/u/16208872?s=460&v=4',
@@ -187,6 +187,7 @@ const stories = [
       },
     ],
   },
+  */
 ];
 
 export default stories;

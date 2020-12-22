@@ -45,4 +45,9 @@ public class StartSceneManagerScript : MonoBehaviour
     {
         UnityMessageManager.Instance.SendMessageToRN("SceneToLoad");
     }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene("OnlineSafetyStoryGame");
+    }
 }

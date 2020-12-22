@@ -15,14 +15,14 @@ class UserView extends React.PureComponent {
 
     return (
       <View style={styles.userView}>
-        <Image
+        {/*<Image
           source={{ uri: props.profile }}
           style={styles.image}
         />
         <View style={{ flex: 1 }}>
           <Text style={styles.name}>{props.name}</Text>
           <Text style={styles.time}>Posted 2h ago</Text>
-        </View>
+        </View>*/}
         <TouchableOpacity onPress={props.onClosePress}>
           <Icon
             name="close"

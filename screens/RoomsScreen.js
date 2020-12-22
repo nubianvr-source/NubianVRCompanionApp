@@ -75,7 +75,7 @@ const RoomsScreen = ({navigation}) => {
               <View style={styles.roomListItemContainer}>
                 <View style={{backgroundColor: '#93D10F', width: 2}} />
                 <View style={styles.roomListItemView}>
-                  <Text style={styles.roomModule}>Online Safety</Text>
+                  <Text style={styles.roomModule}>Topic</Text>
                   <Text style={styles.roomTopicText}>{item.name}</Text>
                 </View>
               </View>

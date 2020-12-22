@@ -146,6 +146,7 @@ const StoryContainer = (props) => {
           />
 
           {loading()}
+          <UserView onClosePress={props.onClose} />
 
           {/*{isReadMore && <Readmore onReadMore={onReadMoreOpen} />}*/}
 

@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text interventionText;
     [SerializeField] private Text playerPointsText;
     [SerializeField] private Text numberOfQuestionsAnsweredText;
+    [SerializeField] private TMP_Text finalPointsText;
+    [SerializeField] private TMP_Text interventionTitle;
     private static int _numberOfQuestionsAnswered = 1;
-    [SerializeField] private int playerPoints;
+    [SerializeField] private static int playerPoints;
     [SerializeField] private Animator animator;
     [SerializeField]private UI_System UIManager;
     [SerializeField] private UI_Screen interventionScreen;
@@ -33,6 +35,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text questionPoints;
     [SerializeField] private Button trueButton;
     [SerializeField] private Button falseButton;
+    [SerializeField] private Image imagePrompt;
+    [SerializeField] private Sprite correctPrompt;
+    [SerializeField] private Sprite incorrectPrompt;
+    
+
 
 
     private void Start()
@@ -47,6 +54,8 @@ public class GameManager : MonoBehaviour
 
         EnableButtons();
         Screen.orientation = ScreenOrientation.Portrait;
+        playerPointsText.gameObject.SetActive(true);
+
 
 
     }
@@ -61,10 +70,11 @@ public class GameManager : MonoBehaviour
         trueAnswerText.text = _currentQuestion.TrueAnswerText;
         falseAnswerText.text = _currentQuestion.falseAnswerText;
 
-       
+    }
 
-
-
+    private void Update()
+    {
+        playerPointsText.text = playerPoints + " Points";
     }
 
     public void LoadNextQuestion()
@@ -94,6 +104,10 @@ public class GameManager : MonoBehaviour
             interventionText.text = _currentQuestion.correctIntervention;
             animator.SetTrigger("TrueCorrect");
             questionPoints.text = "CORRECT\n+10 POINTS";
+            interventionTitle.text = "You Did the Right Thing!";
+            imagePrompt.sprite = correctPrompt;
+            playerPointsText.gameObject.SetActive(false);
+            playerPoints += 10;
         }
         else
         {
@@ -101,6 +115,10 @@ public class GameManager : MonoBehaviour
             interventionText.text = _currentQuestion.wrongIntervention;
             animator.SetTrigger("TrueWrong");
             questionPoints.text = "WRONG\n-10 POINTS";
+            interventionTitle.text = "Risk Alert";
+            imagePrompt.sprite = incorrectPrompt;
+            playerPointsText.gameObject.SetActive(false);
+            playerPoints -= 10;
 
         }
         
@@ -123,8 +141,25 @@ public class GameManager : MonoBehaviour
     {
         if (_numberOfQuestionsAnswered > 5)
         {
+            if (playerPoints < 0)
+            {
+                finalPointsText.text = "Your final score is\n -" + playerPoints + " Points.\nIt's seems we might have to take this lesson all over again";
+            }
 
-            UIManager.SwitchScreens(finishScreen);
+            else if (playerPoints > 0 && playerPoints <= 20)
+            {
+                finalPointsText.text = "Your final score is\n" + playerPoints + " Points.\n Well at least you didn't get a zero, but a lot more can be done to improve. Maybe try taking this lesson again?";
+            }
+            else if (playerPoints > 20 && playerPoints <= 40)
+            {
+                finalPointsText.text = "Your final score is\n" + playerPoints + " Points.\nNicely done, just a few rough edges here and there, nothing a little revision can't fix";
+            }
+            else
+            {
+                finalPointsText.text = "Your final score is\n" + playerPoints + " Points.\nA perfect score, well done";
+            }
+
+                UIManager.SwitchScreens(finishScreen);
 
         }
         else
@@ -154,6 +189,10 @@ public class GameManager : MonoBehaviour
             interventionText.text = _currentQuestion.correctIntervention;
             animator.SetTrigger("FalseCorrect");
             questionPoints.text = "CORRECT\n+10 POINTS";
+            interventionTitle.text = "You Did the Right Thing!";
+            imagePrompt.sprite = correctPrompt;
+            playerPointsText.gameObject.SetActive(false);
+            playerPoints += 10;
 
         }
           else
@@ -162,6 +201,10 @@ public class GameManager : MonoBehaviour
             interventionText.text = _currentQuestion.wrongIntervention;
             animator.SetTrigger("FalseWrong");
             questionPoints.text = "WRONG\n-10 POINTS";
+            interventionTitle.text = "Risk Alert";
+            imagePrompt.sprite = correctPrompt;
+            playerPointsText.gameObject.SetActive(false);
+            playerPoints -= 10;
         }
        
     }
@@ -169,6 +212,7 @@ public class GameManager : MonoBehaviour
     public void Finish()
     {
         //UnityMessageManager.Instance.SendMessageToRN("Finish");
+        playerPoints = 0;
         SceneManager.LoadScene("ExitScene");
     }
 

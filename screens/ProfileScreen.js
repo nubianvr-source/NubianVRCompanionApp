@@ -80,11 +80,8 @@ const ProfileScreen = ({navigation}) => {
         <Text style={styles.textHighlightBold}>
           {auth().currentUser.displayName}
         </Text>
-        <Text style={styles.text}>
-          Your home feed is empty. Find a lesson you’re interested in to start
-          to build your feed.
-        </Text>
-        <View style={styles.infoViewHorizontal}>
+        <Text style={styles.text} />
+        {/*<View style={styles.infoViewHorizontal}>
           <Image
             source={require('../assets/img/lessonsCompleteIcon.png')}
             style={styles.lessonsCompleteIcon}
@@ -93,9 +90,9 @@ const ProfileScreen = ({navigation}) => {
             You have completed <Text style={styles.textGreenMedium}>6</Text>{' '}
             lessons
           </Text>
-        </View>
+        </View>*/}
       </View>
-      <View style={styles.achievementsView}>
+      {/*<View style={styles.achievementsView}>
         <Text style={styles.achievementsHeader}>Achievements</Text>
         <View style={styles.achievementsRowFlex}>
           {achievementsRow1.map((item) => {
@@ -117,7 +114,7 @@ const ProfileScreen = ({navigation}) => {
             );
           })}
         </View>
-      </View>
+      </View>*/}
       <View style={styles.infoViewHorizontal}>
         <Image
           source={require('../assets/img/sosIcon.png')}
