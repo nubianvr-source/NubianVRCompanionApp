@@ -9,11 +9,13 @@ import LessonsScreen from './LessonsScreen';
 import RoomsScreen from './RoomsScreen';
 import ProfileScreen from './ProfileScreen';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import OnlineSafetyModule from './OnlineSafetyModule';
 
 const HomeStack = createStackNavigator();
 const LessonsStack = createStackNavigator();
 const RoomsStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
+const ModuleOnlineSafety = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +55,7 @@ const MainTabScreen = () => (
     />
     <Tab.Screen
       name="Lessons"
-      component={LessonStackScreen}
+      component={ModuleOnlineSafetyScreen}
       options={{
         tabBarLabel: 'Lessons',
         tabBarIcon: ({focused}) => (
@@ -149,6 +151,34 @@ const LessonStackScreen = ({navigation}) => (
     />
   </LessonsStack.Navigator>
 );
+
+const ModuleOnlineSafetyScreen = ({navigation}) => (
+  <ModuleOnlineSafety.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#000000',
+      },
+      headerTintColor: '#41B7E9',
+      headerTitleStyle: {
+        fontSize: 16,
+        fontFamily: 'Rubik-Medium',
+      },
+    }}>
+    <ModuleOnlineSafety.Screen
+      name="Life Skills Curriculum"
+      component={OnlineSafetyModule}
+      options={{
+        headerRight: () => (
+          <Image
+            source={require('../assets/img/lifeskillstabicon.png')}
+            style={styles.lessonsTabImage}
+          />
+        ),
+      }}
+    />
+  </ModuleOnlineSafety.Navigator>
+);
+
 const RoomsStackScreen = ({navigation}) => (
   <RoomsStack.Navigator
     screenOptions={{

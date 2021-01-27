@@ -1,7 +1,7 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'NubianVRCompanionApp' do
   config = use_native_modules!
@@ -13,6 +13,8 @@ target 'NubianVRCompanionApp' do
   pod 'react-native-video', :path => '../node_modules/react-native-video'
 
   pod 'react-native-video-cache', :path => '../node_modules/react-native-video-cache'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
   target 'NubianVRCompanionAppTests' do
     inherit! :complete

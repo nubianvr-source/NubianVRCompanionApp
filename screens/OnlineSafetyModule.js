@@ -14,8 +14,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const OnlineSafetyModule = ({navigation}) => {
   const [lessons, setPeople] = useState([
     {name: "Stop, Don't Click Strange Links", id: '1'},
-    /*{name: 'Spotting Bad Actors', id: '2'},
-    {name: 'Understanding Fake News', id: '3'},*/
+    {name: 'What should you do?: Game', id: '2'},
+    /*{name: 'Understanding Fake News', id: '3'},*/
   ]);
 
   const {colors} = useTheme();
@@ -34,10 +34,7 @@ const OnlineSafetyModule = ({navigation}) => {
             onPress={() =>
               item.id == 1
                 ? navigation.navigate('Online Safety Lesson')
-                : ToastAndroid.show(
-                    'Lesson not available yet',
-                    ToastAndroid.SHORT,
-                  )
+                : navigation.navigate('Game', {level: 'TrueFalseModel'})
             }>
             <Text style={styles.item}>{item.name}</Text>
             <Icon name="arrow-forward-ios" color="#41B7E9" size={10} />

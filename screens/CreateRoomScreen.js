@@ -48,13 +48,13 @@ const CreateRoomsScreen = ({navigation}) => {
       .add({
         name: roomName,
         latestMessage: {
-          text: `You have joined the room ${roomName}.`,
+          text: `You have joined the public room ${roomName}.`,
           createdAt: new Date().getTime(),
         },
       })
       .then((docRef) => {
         docRef.collection('MESSAGES').add({
-          text: `You have joined the room ${roomName}.`,
+          text: `You have joined the public room ${roomName}.`,
           createdAt: new Date().getTime(),
           system: true,
         });

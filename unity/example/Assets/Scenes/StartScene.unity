@@ -396,7 +396,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 379301257}
-        m_MethodName: LoadScene
+        m_MethodName: GetSceneLoad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

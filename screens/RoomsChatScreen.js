@@ -8,7 +8,7 @@ import {
 } from 'react-native-gifted-chat';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../navigation/AuthProvider';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import Loading from '../components/LoaderComponent';
 
@@ -144,13 +144,14 @@ export default function RoomScreen({route}) {
       onSend={handleSend}
       user={{_id: currentUser.uid}}
       renderBubble={renderBubble}
-      placeholder="Enter your brief response here..."
+      placeholder="Type Message Here..."
       showUserAvatar
-      alwaysShowSend
+      scrollToBottom
       renderSend={renderSend}
-      scrollToBottom={scrollToBottomComponent}
+      scrollToBottomComponent={scrollToBottomComponent}
       renderLoading={renderLoading}
       renderSystemMessage={renderSystemMessage}
+      isTyping
     />
   );
 }

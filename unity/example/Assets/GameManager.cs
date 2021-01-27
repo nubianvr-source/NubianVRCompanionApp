@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
 
     public void Finish()
     {
-        //UnityMessageManager.Instance.SendMessageToRN("Finish");
+        UnityMessageManager.Instance.SendMessageToRN("Finish");
         playerPoints = 0;
         SceneManager.LoadScene("ExitScene");
     }

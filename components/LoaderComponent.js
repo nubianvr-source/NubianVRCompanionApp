@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import AnimatedLoader from 'react-native-animated-loader';
 
 const Loader = (props) => {
-  const {visible, overlayColor} = props;
+  const {visible, overlayColor, enableBackdrop} = props;
   return (
     <AnimatedLoader
       visible={visible}
@@ -20,15 +20,10 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   },
-  loaderWrapper: {
-    backgroundColor: '#FFFFFF',
-    opacity: 0.5,
-    height: 100,
-    width: 100,
-    borderRadius: 10,
-    display: 'flex',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'space-around',
   },
 });
 

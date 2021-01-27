@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import {AuthContext} from './AuthProvider';
-
+import SplashScreen from '../screens/Splashscreen';
 import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 
@@ -10,8 +10,8 @@ const Routes = () => {
   const {user, setUser} = useContext(AuthContext);
   const [initializing, setInitializing] = useState(true);
 
-  const onAuthStateChanged = (user) => {
-    setUser(user);
+  const onAuthStateChanged = (userProfile) => {
+    setUser(userProfile);
     if (initializing) {
       setInitializing(false);
     }
@@ -23,7 +23,7 @@ const Routes = () => {
   }, []);
 
   if (initializing) {
-    return null;
+    return <SplashScreen />;
   }
 
   return (

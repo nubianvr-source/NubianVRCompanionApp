@@ -84,6 +84,14 @@ const StoryContainer = (props) => {
     setModel(false);
   };
 
+  const LoadingOverlay = () => {
+    return (
+      <View style={styles.Loadingwrapper}>
+        <Loader visible={!isLoaded} overlayColor="rgba(0,0,0,0.75)" />
+      </View>
+    );
+  };
+
   const loading = () => {
     if (!isLoaded) {
       return (
@@ -96,7 +104,7 @@ const StoryContainer = (props) => {
               story={story}
             />
           </View>
-          <Loader visible={!isLoaded} overlayColor="rgba(0,0,0,0.75)" />
+          <LoadingOverlay />
         </View>
       );
     }
@@ -234,7 +242,7 @@ const styles = StyleSheet.create({
   },
   modal: {
     width: '100%',
-    height: '90%',
+    height: '50%',
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -246,6 +254,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 4,
     marginTop: 8,
+  },
+  Loadingwrapper: {
+    backgroundColor: '#141414A0',
+    height: 100,
+    width: 100,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

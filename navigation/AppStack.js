@@ -10,6 +10,8 @@ import LessonEndTipScreen from '../screens/FinalTipScreen';
 import CreateRoomsScreen from '../screens/CreateRoomScreen';
 import RoomsChatScreen from '../screens/RoomsChatScreen';
 import PollsRoom from '../screens/PollsScreen';
+import SplashScreen from '../screens/Splashscreen';
+import Loader from '../components/LoaderComponent';
 
 const Stack = createStackNavigator();
 
@@ -61,6 +63,7 @@ const AppStack = ({navigation}) => {
           title: route.params.thread.name,
         })}
       />
+      <Stack.Screen name="Splash" component={SplashScreen} />
     </Stack.Navigator>
   );
 };

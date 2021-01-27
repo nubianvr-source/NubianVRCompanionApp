@@ -217,7 +217,6 @@ const styles = StyleSheet.create({
   moduleBanner: {
     resizeMode: 'contain',
     width: '100%',
-    height: 230,
   },
 });
 

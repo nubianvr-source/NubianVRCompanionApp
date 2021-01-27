@@ -13,7 +13,6 @@ import {
 import {useTheme} from '@react-navigation/native';
 import {AuthContext} from '../navigation/AuthProvider';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {List} from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 
 import Loading from '../components/LoaderComponent';
@@ -27,43 +26,46 @@ const RoomsScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function unsubscribe() {
-      await loadRooms();
-    }
+    const unsubscribe = firestore()
+      .collection('THREADS')
+      .orderBy('latestMessage.createdAt', 'desc')
+      .onSnapshot((querySnapshot) => {
+        const threads = querySnapshot.docs.map((documentSnapshot) => {
+          return {
+            _id: documentSnapshot.id,
+            name: '',
+            // add this
+            latestMessage: {
+              text: '',
+            },
+            // ---
+            ...documentSnapshot.data(),
+          };
+        });
+
+        setThreads(threads);
+
+        if (loading) {
+          setLoading(false);
+        }
+      });
 
     return () => unsubscribe();
   }, []);
 
-  const loadRooms = firestore()
-    .collection('THREADS')
-    // add this
-    .orderBy('latestMessage.createdAt', 'desc')
-    .onSnapshot((querySnapshot) => {
-      const threads = querySnapshot.docs.map((documentSnapshot) => {
-        return {
-          _id: documentSnapshot.id,
-          name: '',
-          // add this
-          latestMessage: {
-            text: '',
-          },
-          // ---
-          ...documentSnapshot.data(),
-        };
-      });
-
-      setThreads(threads);
-
-      if (loading) {
-        setLoading(false);
-      }
-    });
-
+  const LoadingOverlay = () => {
+    return (
+      <View style={styles.Loadingwrapper}>
+        <Loading visible={loading} overlayColor="rgba(0,0,0,0.75)" />
+      </View>
+    );
+  };
   return (
     <View style={styles.container}>
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
       {loading == true ? (
-        <Loading visible={loading} overlayColor="rgba(0,0,0,0)" />
+        //<Loading visible={loading} overlayColor="rgba(0,0,0,0)" />
+        <LoadingOverlay />
       ) : (
         <FlatList
           data={threads}
@@ -146,5 +148,12 @@ const styles = StyleSheet.create({
   },
   listDescription: {
     fontSize: 16,
+  },
+  Loadingwrapper: {
+    height: 150,
+    width: 150,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

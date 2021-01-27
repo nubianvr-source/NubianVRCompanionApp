@@ -4,6 +4,8 @@ import database from '@react-native-firebase/database';
 import LoaderComp from '../components/LoaderComponent';
 import {CommonActions} from '@react-navigation/native';
 import {Alert} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {userToken} from '../services/LocalNotificationService';
 
 export const AuthContext = createContext();
 
@@ -14,6 +16,16 @@ export const AuthProvider = ({children}) => {
   const [passwordError, setPasswordError] = useState(null);
   const [showEmailWarning, setShowEmailWarning] = useState(null);
   const [showPasswordWarning, setShowPasswordWarning] = useState(null);
+
+  const storeRunningAppFirstTimeData = async (value) => {
+    try {
+      await AsyncStorage.setItem('@firstTime', value);
+      console.log('Value Stored: ', value);
+    } catch (e) {
+      // saving error
+      console.log(e);
+    }
+  };
 
   return (
     <AuthContext.Provider
@@ -39,7 +51,19 @@ export const AuthProvider = ({children}) => {
           auth()
             .signInWithEmailAndPassword(email, password)
             .then(() => {
+              //Remember to remove the next line after tests are complete.
+              storeRunningAppFirstTimeData('yes');
               setVisible(false);
+              console.log(userToken);
+              database()
+                .ref('users/' + auth().currentUser.uid + '/userToken')
+                .set({
+                  userToken: userToken,
+                })
+                .catch(function (error) {
+                  console.log(error);
+                  Alert.alert('Something went wrong, Please try again.');
+                });
             })
             .catch(function (error) {
               // Handle Errors here.
@@ -71,10 +95,13 @@ export const AuthProvider = ({children}) => {
         },
         register: async (email, password, displayName) => {
           setVisible(true);
+
           auth()
             .createUserWithEmailAndPassword(email, password)
             .then(() => {
               setVisible(false);
+              //Run the store running App Data for the first time Function which stores preferences for later.
+              storeRunningAppFirstTimeData('yes');
             })
             .then(() => {
               auth().currentUser.updateProfile({displayName: displayName});
@@ -87,9 +114,14 @@ export const AuthProvider = ({children}) => {
                   email: email,
                   displayName: displayName,
                 })
+                .database()
+                .ref('users/' + auth().currentUser.uid + '/userToken')
+                .set({
+                  userToken: userToken,
+                })
                 .catch(function (error) {
                   console.log(error);
-                  alert('Something went wrong, Please try again.');
+                  Alert.alert('Something went wrong, Please try again.');
                 });
             })
             .catch(function (error) {

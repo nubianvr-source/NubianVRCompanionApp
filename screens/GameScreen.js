@@ -31,7 +31,7 @@ const GameScreen = ({route}) => {
     console.log({hander});
     switch (hander) {
       case 'Finish':
-        navigation.navigate('LessonEnd');
+        navigation.navigate('Online Safety Module');
         break;
       case 'SceneToLoad':
         UnityModule.postMessageToUnityManager(route.params.level);
