@@ -61,11 +61,20 @@ export default function RoomScreen({route}) {
         wrapperStyle={{
           right: {
             // Here is the color change
+            backgroundColor: '#41B7E9',
+            borderBottomRightRadius: 0,
+          },
+          left: {
+            // Here is the color change
             backgroundColor: '#141414',
+            borderBottomLeftRadius: 0,
           },
         }}
         textStyle={{
           right: {
+            color: '#fff',
+          },
+          left: {
             color: '#fff',
           },
         }}
@@ -139,20 +148,23 @@ export default function RoomScreen({route}) {
   }
 
   return (
-    <GiftedChat
-      messages={messages}
-      onSend={handleSend}
-      user={{_id: currentUser.uid}}
-      renderBubble={renderBubble}
-      placeholder="Type Message Here..."
-      showUserAvatar
-      scrollToBottom
-      renderSend={renderSend}
-      scrollToBottomComponent={scrollToBottomComponent}
-      renderLoading={renderLoading}
-      renderSystemMessage={renderSystemMessage}
-      isTyping
-    />
+    <View style={{backgroundColor: '#000000', flex: 1}}>
+      <GiftedChat
+        messages={messages}
+        onSend={handleSend}
+        user={{_id: currentUser.uid}}
+        renderBubble={renderBubble}
+        placeholder="Type Message Here..."
+        showUserAvatar
+        scrollToBottom
+        renderSend={renderSend}
+        scrollToBottomComponent={scrollToBottomComponent}
+        renderLoading={renderLoading}
+        renderSystemMessage={renderSystemMessage}
+        isTyping={true}
+        alwaysShowSend
+      />
+    </View>
   );
 }
 /* es-lint-enable */

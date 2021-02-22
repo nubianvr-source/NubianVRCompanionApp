@@ -26,12 +26,17 @@ const GameScreen = ({route}) => {
   console.log(count);
 
   //const {level} = route.params;
+  const navigation = useNavigation();
 
   const onUnityMessage = (hander) => {
     console.log({hander});
     switch (hander) {
       case 'Finish':
-        navigation.navigate('Online Safety Module');
+        if (route.params.level == 'TrueFalseModel') {
+          navigation.goBack();
+        }
+        navigation.navigate('Online Safety Lesson');
+        console.log('Navigation Complete:', {hander});
         break;
       case 'SceneToLoad':
         UnityModule.postMessageToUnityManager(route.params.level);
@@ -39,7 +44,6 @@ const GameScreen = ({route}) => {
     }
   };
 
-  const navigation = useNavigation();
   const onClick = () => {
     console.log('Button Clicked');
     UnityModule.postMessageToUnityManager(auth().currentUser.displayName);

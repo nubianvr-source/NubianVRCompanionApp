@@ -21,7 +21,6 @@ import {
   TourGuideZoneByPosition, // Component to use mask on overlay (ie, position absolute)
   useTourGuideController, // hook to start, etc.
 } from 'rn-tourguide';
-import PushNotification from 'react-native-push-notification';
 import Modal from 'react-native-modal';
 
 const {height, width} = Dimensions.get('screen');

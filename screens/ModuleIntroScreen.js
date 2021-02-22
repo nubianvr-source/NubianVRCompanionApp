@@ -84,15 +84,7 @@ const ModuleIntroScreen = ({navigation}) => {
           </View>
         );
       })}
-      <View style={styles.listView}>
-        <Text style={styles.textHedear}>Objectives</Text>
-        <Text style={styles.text}>1. Introduction to Online Safety</Text>
-        <Text style={styles.text}>2. Reasons for Online Safety</Text>
-        <Text style={styles.text}>3. Risks of Online Safety</Text>
-        <Text style={styles.text}>4. How To: Audit Your Online Presence</Text>
-        <Text style={styles.text}>5. How To: Secure Your Online Presence</Text>
-        <Text style={styles.text}>6. Reflection: What’s next from here</Text>
-      </View>
+
       <TouchableOpacity
         style={styles.enrollBtnInvert}
         onPress={() => navigation.navigate('Lesson Slides')}>
@@ -217,6 +209,7 @@ const styles = StyleSheet.create({
   moduleBanner: {
     resizeMode: 'contain',
     width: '100%',
+    height: 230,
   },
 });
 

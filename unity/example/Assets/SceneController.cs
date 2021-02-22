@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        Screen.fullScreen = true;
     }
 
     // Update is called once per frame

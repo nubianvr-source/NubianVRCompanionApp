@@ -9,6 +9,7 @@ public class StartSceneManagerScript : MonoBehaviour
     void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
+        Screen.fullScreen = false;
     }
 
     // Update is called once per frame

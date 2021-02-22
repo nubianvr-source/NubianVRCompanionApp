@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
         }
         SetCurrentQuestion();
 
+        Screen.fullScreen = true;
+
         numberOfQuestionsAnsweredText.text = _numberOfQuestionsAnswered + " of 5";
 
         EnableButtons();
@@ -159,7 +161,8 @@ public class GameManager : MonoBehaviour
                 finalPointsText.text = "Your final score is\n" + playerPoints + " Points.\nA perfect score, well done";
             }
 
-                UIManager.SwitchScreens(finishScreen);
+            UIManager.SwitchScreens(finishScreen);
+            _numberOfQuestionsAnswered = 0;
 
         }
         else
@@ -211,7 +214,6 @@ public class GameManager : MonoBehaviour
 
     public void Finish()
     {
-        UnityMessageManager.Instance.SendMessageToRN("Finish");
         playerPoints = 0;
         SceneManager.LoadScene("ExitScene");
     }

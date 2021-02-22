@@ -29,11 +29,11 @@ const MainTabScreen = () => (
       style: {
         backgroundColor: '#000000',
         borderTopWidth: 0,
-        height: 55,
+        borderBottomWidth: 8,
       },
       labelStyle: {
-        fontSize: 13,
         fontFamily: 'Rubik-Medium',
+        fontSize: 13,
       },
     }}>
     <Tab.Screen
