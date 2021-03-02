@@ -126,6 +126,7 @@ export default function RoomScreen({route}) {
       .collection('MESSAGES')
       .add({
         text,
+        username: currentUser.displayName,
         createdAt: new Date().getTime(),
         user: {
           _id: currentUser.uid,

@@ -10,17 +10,19 @@ exports.sendPushNotification = functions.firestore
   .document('THREADS/{threadID}/MESSAGES/{messagesID}')
   .onCreate(async (event) => {
     // gets standard JavaScript object from the new write
-    const writeData = event.data;
+    const writeData = event.data();
+    const testValue = JSON.stringify(writeData.text);
+    console.log(testValue);
     // access data necessary for push notification
     const sender = writeData.uid;
-    const senderName = writeData.name;
+    const senderName = writeData.username;
     const recipient = writeData.recipient;
-    const message = writeData;
+    const message = writeData.text;
     // the payload is what will be delivered to the device(s)
     let payload = {
       notification: {
-        title: 'from' + senderName,
-        //body:
+        title: 'from ' + senderName,
+        body: message,
         //sound:
         //badge:
       },
@@ -31,49 +33,16 @@ exports.sendPushNotification = functions.firestore
     // or collect them by accessing your database
 
     var pushToken = [];
-    var userProfile = [];
-
-    admin
-      .database()
-      .ref('users/')
-      .once('value', (snapshot) => {
-        let userProfileData = snapshot.val();
-        let userProfileItems = Object.keys(userProfileData).map((key) => {
-          return userProfileData[key];
-        });
-        userProfileItems.map((user) => {
-          return userProfile.push(user.id);
-        });
-      });
-
-    let promises = [];
-    for (let i = 0; i < userProfile.length; i++) {
-      let userId = userProfile[i];
-      let promise = admin
-        .database()
-        .ref(`users/${userId}/userToken/userToken/token`)
-        .once('value', (tokenSnapshot) => {
-          let userData = tokenSnapshot.val();
-          let userItem = Object.keys(userData).map((key) => {
-            return userData[key];
-          });
-          userItem.map((item) => pushToken.push(item));
-          return true;
-        });
-      promise.push(promise);
-    }
-    await Promise.all(promises);
-    return await admin.messaging().sendToDevice(pushToken, payload);
-
-    /*
     return admin
-      .database()
-      .ref('users')
+      .firestore()
+      .collection('USERS')
+      .doc('userTokens')
       .get()
       .then((doc) => {
-        pushToken = doc.val().token;
+        pushToken = doc.data().tokens;
+        // sendToDevice can also accept an array of push tokens
+        return admin.messaging().sendToDevice(pushToken, payload);
       });
-      */
   });
 
 // // Create and Deploy Your First Cloud Functions

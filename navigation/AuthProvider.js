@@ -5,7 +5,7 @@ import LoaderComp from '../components/LoaderComponent';
 import {CommonActions} from '@react-navigation/native';
 import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {userToken} from '../services/LocalNotificationService';
+import firestore from '@react-native-firebase/firestore';
 
 export const AuthContext = createContext();
 
@@ -54,8 +54,9 @@ export const AuthProvider = ({children}) => {
               //Remember to remove the next line after tests are complete.
               storeRunningAppFirstTimeData('yes');
               setVisible(false);
-              console.log(userToken);
-              database()
+
+              //Below is the code for saving the userToken in the firebase realtime database
+              /*database()
                 .ref('users/' + auth().currentUser.uid + '/userToken')
                 .set({
                   userToken: userToken,
@@ -63,7 +64,7 @@ export const AuthProvider = ({children}) => {
                 .catch(function (error) {
                   console.log(error);
                   Alert.alert('Something went wrong, Please try again.');
-                });
+                });*/
             })
             .catch(function (error) {
               // Handle Errors here.
@@ -114,11 +115,7 @@ export const AuthProvider = ({children}) => {
                   email: email,
                   displayName: displayName,
                 })
-                .database()
-                .ref('users/' + auth().currentUser.uid + '/userToken')
-                .set({
-                  userToken: userToken,
-                })
+
                 .catch(function (error) {
                   console.log(error);
                   Alert.alert('Something went wrong, Please try again.');

@@ -21,6 +21,8 @@ const App = () => {
       const options = {
         soundname: 'default',
         playSound: true,
+        smallIcon: 'android/app/src/main/res/mipmap-hdpi/lifeskills.png',
+        largeIcon: 'android/app/src/main/res/mipmap-mdpi/lifeskills.png',
       };
       localNotificationService.showNotification(
         0,
@@ -32,8 +34,8 @@ const App = () => {
     }
 
     function onOpenNotification(notify) {
-      console.log('[App] onOpenNotifications: ', notify);
-      Alert.alert('Open Notifications: ' + notify.body);
+      console.log('[App] onOpenNotificationsHere: ', notify);
+      //Alert.alert('Open Notifications: ' + notify.body);
     }
 
     return () => {

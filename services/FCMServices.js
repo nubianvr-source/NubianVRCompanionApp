@@ -75,6 +75,7 @@ class FCMService {
     onNotifcation,
     onOpenNotification,
   ) => {
+    //When application is running in the background
     messaging().onNotificationOpenedApp((remoteMessage) => {
       console.log(
         '[FCMService] onNotificationOpenedApp Notification caused app to open',
@@ -85,6 +86,7 @@ class FCMService {
         onOpenNotification(notification);
       }
     });
+    //When application is opened from quit state.
     messaging()
       .getInitialNotification()
       .then((remoteMessage) => {
@@ -97,7 +99,7 @@ class FCMService {
           onOpenNotification(notification);
         }
       });
-
+    //ForeGround Message Handler
     this.messageListener = messaging().onMessage(async (remoteMessage) => {
       console.log('[FCMService] A new FCM message arrived', remoteMessage);
       if (remoteMessage) {

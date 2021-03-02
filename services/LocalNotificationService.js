@@ -1,28 +1,12 @@
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
-import database from '@react-native-firebase/database';
 import {Platform} from 'react-native';
-import auth from '@react-native-firebase/auth';
-import {Title} from 'react-native-paper';
-import {Alert} from 'react-native';
-
-let userToken;
 
 class LocalNotificationService {
   configure = (onOpenNotification) => {
     PushNotification.configure({
       onRegister: function (token) {
         console.log('[LocalNotification] onRegister:', token);
-        userToken = token;
-        /*database()
-          .ref('users/' + auth().currentUser.uid + '/userToken')
-          .set({
-            token: token,
-          })
-          .catch(function (error) {
-            console.log(error);
-            Alert.alert('Something went wrong, Please try again.');
-          });*/
       },
       onNotification: function (notification) {
         console.log('[LocalNotification] onNotification', notification);
@@ -37,13 +21,13 @@ class LocalNotificationService {
           notification.finish(PushNotificationIOS.FetchResult.NoData);
         }
       },
-      permission: {
+      permissions: {
         alert: true,
         badge: true,
         sound: true,
       },
-      popIntialNotification: true,
-      requestPermission: true,
+      popInitialNotification: true,
+      requestPermissions: true,
     });
   };
 
@@ -52,7 +36,7 @@ class LocalNotificationService {
   };
 
   showNotification = (id, title, message, data = {}, options = {}) => {
-    PushNotification.LocalNotificationService({
+    PushNotification.localNotification({
       ...this.buildAndroidNotification(id, title, message, data, options),
       ...this.buildIOSNotification(id, title, message, data, options),
       title: title || '',
@@ -98,7 +82,7 @@ class LocalNotificationService {
     }
   };
 
-  removeAllDeliveredNotificationsByID = (notificationId) => {
+  removeAllDeliveredNotificationByID = (notificationId) => {
     console.log(
       '[LocalNotificationService] removeDeliveredNOtificationByID: ',
       notificationId,
@@ -107,4 +91,3 @@ class LocalNotificationService {
   };
 }
 export const localNotificationService = new LocalNotificationService();
-export {userToken};
