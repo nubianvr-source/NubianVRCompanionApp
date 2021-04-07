@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//Customizable class for questions
 [System.Serializable]
 public class Questions
 {

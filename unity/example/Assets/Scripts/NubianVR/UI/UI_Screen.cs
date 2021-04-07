@@ -17,10 +17,6 @@ namespace NubianVR.UI
         [Header("Main Properties")] 
         public Selectable m_StartSelectable;
 
-        [Header("Sky Box Properties")] 
-        public Material skyBoxMat;
-
-        public Skybox skyBox;
         
         [Header("Screen Events")]
         public UnityEvent onScreenStart = new UnityEvent();
@@ -62,10 +58,7 @@ namespace NubianVR.UI
             {
                 onScreenStart?.Invoke();
             }
-            if (skyBoxMat)
-            {
-                skyBox.material = skyBoxMat;
-            }
+            
             HandleAnimator("show");
             //canvasGroup.alpha = 1;
         }

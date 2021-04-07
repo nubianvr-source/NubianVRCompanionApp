@@ -12,12 +12,6 @@ public class StartSceneManagerScript : MonoBehaviour
         Screen.fullScreen = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void Awake()
     {
         UnityMessageManager.Instance.OnMessage += RecieveMessage;

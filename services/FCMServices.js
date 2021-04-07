@@ -116,7 +116,7 @@ class FCMService {
     messaging().onTokenRefresh((fcmToken) => {
       console.log('[FCMService] New token refresh', fcmToken);
       onRegister(fcmToken);
-    });
+    }); 
   };
 
   unRegister = () => {
